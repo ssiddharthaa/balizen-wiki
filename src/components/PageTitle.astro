@@ -1,0 +1,37 @@
+---
+/**
+ * PageTitle override: prototype-style eyebrow (section name) above the serif H1,
+ * plus the "Draft — not yet approved" badge whenever frontmatter has
+ * `status: draft-unapproved`.
+ */
+import DraftBadge from './DraftBadge.astro';
+
+// Same id Starlight's own PageTitle uses (not an exported subpath, so inlined).
+const PAGE_TITLE_ID = '_top';
+
+const { data } = Astro.locals.starlightRoute.entry;
+const isDraft = data.status === 'draft-unapproved';
+---
+
+{data.section && <p class="eyebrow">{data.section}</p>}
+<h1 id={PAGE_TITLE_ID}>
+	{data.title}{isDraft && <>&nbsp;<DraftBadge /></>}
+</h1>
+
+<style>
+	.eyebrow {
+		font-size: 0.69rem;
+		letter-spacing: 0.26em;
+		text-transform: uppercase;
+		color: var(--teal);
+		margin: 1rem 0 0;
+	}
+	h1 {
+		margin-top: 0.35rem;
+		font-family: var(--font-serif);
+		font-weight: 400;
+		font-size: clamp(1.875rem, 5vw, 2.625rem);
+		line-height: 1.18;
+		color: var(--teal-dark);
+	}
+</style>

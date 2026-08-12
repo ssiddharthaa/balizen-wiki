@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Balizen Brand Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#3BA3AB; --teal-dark:#2B7A80; --teal-tint:#E9F4F5;
+  --cream:#F5F1E8; --panel:#F4F3F0; --hugger:#A8B569; --grey:#485760;
+  --ink:#33424C; --line:rgba(59,163,171,.22);
+  --serif:'Playfair Display',Cambria,serif;
+  --sans:'Instrument Sans',Calibri,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:#fff;font-size:16.5px;line-height:1.75;-webkit-font-smoothing:antialiased}
+
+/* ---------- shell ---------- */
+.shell{display:flex;min-height:100vh}
+aside{width:264px;flex-shrink:0;background:#fff;border-right:1px solid var(--line);padding:28px 22px;position:sticky;top:0;height:100vh;overflow-y:auto}
+main{flex:1;min-width:0}
+.page{max-width:720px;margin:0 auto;padding:56px 40px 96px;display:none}
+.page.active{display:block}
+
+/* ---------- sidebar ---------- */
+.wordmark{font-family:var(--serif);font-size:27px;color:var(--teal-dark);letter-spacing:.06em;margin-bottom:2px}
+.wordsub{font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--teal);margin-bottom:30px}
+.navgroup{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--grey);opacity:.55;margin:22px 0 8px}
+nav a{display:block;padding:7px 12px;margin:1px -12px;border-radius:8px;color:var(--ink);text-decoration:none;font-size:15px;transition:background .15s}
+nav a:hover{background:var(--teal-tint)}
+nav a.on{background:var(--teal-tint);color:var(--teal-dark);font-weight:600}
+.mvp{margin-top:30px;padding:12px 14px;background:var(--teal-tint);border-radius:10px;font-size:12.5px;line-height:1.5;color:var(--teal-dark)}
+
+/* ---------- mobile ---------- */
+.topbar{display:none}
+@media(max-width:860px){
+  .shell{display:block}
+  aside{position:fixed;inset:0 auto 0 0;z-index:40;transform:translateX(-100%);transition:transform .25s;width:280px;box-shadow:0 0 40px rgba(72,87,96,.15)}
+  aside.open{transform:none}
+  .topbar{display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);padding:14px 20px;border-bottom:1px solid var(--line)}
+  .topbar .wordmark{font-size:20px;margin:0}
+  .burger{width:38px;height:38px;border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--teal-dark);font-size:17px;cursor:pointer}
+  .page{padding:36px 22px 80px}
+  .scrim{display:none;position:fixed;inset:0;background:rgba(72,87,96,.3);z-index:35}
+  .scrim.on{display:block}
+}
+
+/* ---------- typography ---------- */
+.eyebrow{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--teal);margin-bottom:14px}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(30px,5vw,42px);line-height:1.18;color:var(--teal-dark);margin-bottom:22px}
+h2{font-family:var(--serif);font-weight:500;font-size:24px;color:var(--teal-dark);margin:44px 0 14px}
+h3{font-size:16px;font-weight:600;color:var(--grey);margin:28px 0 8px}
+p{margin-bottom:16px}
+p.lede{font-size:19px;line-height:1.65;color:var(--grey)}
+ul.plain{list-style:none;margin-bottom:16px}
+ul.plain li{padding:5px 0 5px 22px;position:relative}
+ul.plain li::before{content:"";position:absolute;left:2px;top:14px;width:7px;height:7px;border-radius:50%;background:var(--hugger)}
+a.inline{color:var(--teal-dark);text-decoration:underline;text-decoration-color:var(--teal);text-underline-offset:3px}
+hr{border:none;border-top:1px solid var(--line);margin:40px 0}
+
+/* ---------- glossary tooltips (the signature) ---------- */
+.g{position:relative;color:var(--teal-dark);border-bottom:1.5px dotted var(--teal);cursor:help}
+.g .tip{position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(4px);width:min(280px,74vw);background:var(--grey);color:var(--cream);font-size:13.5px;line-height:1.55;padding:12px 15px;border-radius:11px;opacity:0;pointer-events:none;transition:.18s;z-index:20;font-weight:400}
+.g .tip b{color:#fff;display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px}
+.g .tip::after{content:"";position:absolute;top:100%;left:50%;transform:translateX(-50%);border:7px solid transparent;border-top-color:var(--grey)}
+.g:hover .tip,.g.tap .tip{opacity:1;transform:translateX(-50%)}
+.g .tip a{color:var(--teal-tint)}
+
+/* ---------- components ---------- */
+.callout{background:var(--panel);border-left:3px solid var(--teal);border-radius:0 12px 12px 0;padding:20px 24px;margin:20px 0}
+.callout.sage{border-left-color:var(--hugger)}
+.callout h3{margin-top:0}
+.promise{background:var(--teal-dark);color:var(--cream);border-radius:16px;padding:34px 30px;margin:26px 0;text-align:center}
+.promise .line{font-family:var(--serif);font-size:clamp(21px,3.4vw,27px);line-height:1.4}
+.promise .who{font-size:11px;letter-spacing:.26em;text-transform:uppercase;opacity:.7;margin-top:12px}
+
+.dodont{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+@media(max-width:640px){.dodont{grid-template-columns:1fr}}
+.dodont>div{background:var(--panel);border-radius:12px;padding:18px 20px;font-size:15px}
+.dodont .tag{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;display:block;margin-bottom:8px}
+.do .tag{color:var(--teal-dark)} .dont .tag{color:#B96A4B}
+.do{border-top:3px solid var(--teal)} .dont{border-top:3px solid #D8A38C}
+.dodont em{font-style:italic;color:var(--grey)}
+
+.swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;margin:22px 0}
+.sw{border-radius:14px;overflow:hidden;background:var(--panel);border:1px solid var(--line)}
+.sw .chip{height:88px}
+.sw .meta{padding:11px 14px;font-size:13px}
+.sw .meta b{display:block;font-size:14px;color:var(--grey)}
+.sw .meta code{font-family:monospace;color:var(--teal-dark);font-size:12.5px}
+.sw .use{font-size:11.5px;color:var(--grey);opacity:.75;line-height:1.4;display:block;margin-top:3px}
+
+.spec{background:var(--panel);border-radius:14px;padding:26px 28px;margin:16px 0;border:1px solid var(--line)}
+.spec .label{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--teal);margin-bottom:10px}
+.spec .sample-h1{font-family:var(--serif);font-weight:400;font-size:34px;color:var(--teal-dark);line-height:1.2}
+.spec .sample-h2{font-family:var(--serif);font-weight:500;font-size:23px;color:var(--teal-dark)}
+.spec .sample-body{font-size:16.5px}
+.spec .note{font-size:12.5px;color:var(--grey);opacity:.7;margin-top:10px}
+
+.logo-demo{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0}
+@media(max-width:640px){.logo-demo{grid-template-columns:1fr}}
+.logo-demo>div{border-radius:14px;min-height:130px;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:30px;letter-spacing:.08em}
+.next{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;font-size:14.5px}
+.next a{color:var(--teal-dark);text-decoration:none;font-weight:600}
+table{width:100%;border-collapse:collapse;margin:18px 0;background:var(--panel);border-radius:12px;overflow:hidden;font-size:15px}
+th{background:var(--teal-tint);color:var(--teal-dark);text-align:left;padding:11px 16px;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+td{padding:11px 16px;border-top:1px solid var(--line);vertical-align:top}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <button class="burger" onclick="document.querySelector('aside').classList.add('open');document.querySelector('.scrim').classList.add('on')">☰</button>
+  <div class="wordmark">Balizen</div>
+</div>
+<div class="scrim" onclick="closeNav()"></div>
+
+<div class="shell">
+<aside>
+  <div class="wordmark">Balizen</div>
+  <div class="wordsub">Brand Wiki</div>
+  <div class="navgroup">The Brand</div>
+  <nav>
+    <a href="#home" data-p="home">The Balizen Brand</a>
+    <a href="#story" data-p="story">Brand Story</a>
+    <a href="#experience" data-p="experience">Brand Experience</a>
+  </nav>
+  <div class="navgroup">Voice</div>
+  <nav>
+    <a href="#voice" data-p="voice">Voice &amp; Tone</a>
+  </nav>
+  <div class="navgroup">Identity System</div>
+  <nav>
+    <a href="#color" data-p="color">Color</a>
+    <a href="#type" data-p="type">Typography</a>
+    <a href="#logo" data-p="logo">Logo</a>
+  </nav>
+  <div class="navgroup">Applications</div>
+  <nav>
+    <a href="#social" data-p="social">Social Media</a>
+  </nav>
+  <div class="mvp">MVP prototype · content from Brand Book slides 1–13 + Voice &amp; Tone Guide V3. Dotted-underline terms reveal tooltips.</div>
+</aside>
+
+<main>
+
+<!-- ============ HOME ============ -->
+<section class="page" id="p-home">
+  <div class="eyebrow">Section 1 · The Brand</div>
+  <h1>The Balizen Brand.</h1>
+  <p class="lede">As the Balizen business continues to grow and evolve — activating untapped markets, reaching out to new customers, and expanding our presence online — it is essential that the Balizen brand grow with it.</p>
+  <p>We want to make sure the brand captures new audiences while keeping existing customers loyal and happy. This wiki will help you envision how the Balizen Brand is evolving, and serves as the guide for implementing the <a class="inline" href="#color">Balizen Brand Identity System</a> — inside and outside the company.</p>
+  <h2>Marketing goals</h2>
+  <ul class="plain">
+    <li>Activating untapped markets</li>
+    <li>Reaching new customers</li>
+    <li>Expanding online presence</li>
+    <li>Educating customers about our impact as a <span class="g">social enterprise<span class="tip"><b>Glossary</b>Balizen trains people just starting out — handicraft, computer work, on-the-job training. "Giving people an opportunity to improve themselves."</span></span></li>
+  </ul>
+  <h2>What is a brand?</h2>
+  <p>Simply put, a brand is a constellation of experiences perceived in the heart and mind of the customer. Every time a customer engages with Balizen, these experiences grow. Our brand is a promise we make to our customers — a promise we strive to fulfill at every point of interaction. Ideally, our customers' perceptions of Balizen should align with our own aspirations.</p>
+  <div class="callout sage">
+    <p style="margin:0">🌿 We aspire to be a company that <strong>does something positive for people and the planet</strong> — by improving lives, revering nature, and preserving the ancestral wisdom of community and artisanship.</p>
+  </div>
+  <div class="next"><span></span><a href="#story">Brand Story →</a></div>
+</section>
+
+<!-- ============ STORY ============ -->
+<section class="page" id="p-story">
+  <div class="eyebrow">Section 1 · The Brand</div>
+  <h1>Brand Story.</h1>
+  <div class="promise">
+    <div class="line">Balizen = doing something positive<br>for people &amp; the planet.</div>
+    <div class="who">Brand Promise · the single idea we want to own</div>
+  </div>
+
+  <h2>👁️ Brand Vision</h2>
+  <p>Where we are going as a company, and what we want to be.</p>
+  <h3>Product layer</h3>
+  <p>The go-to source of beautifully designed, lovingly crafted, nature-inspired, accessible, joyful homewares, slow fashion &amp; gifts that make people smile — handmade in Bali &amp; Java.</p>
+  <h3>Impact layer</h3>
+  <ul class="plain">
+    <li>Preserving traditional handicrafts for new generations — training young people to appreciate, enjoy &amp; practice not only handicrafts but all the local traditions: farming, fishing, cultural practices.</li>
+    <li>Training villagers in sustainable practices &amp; efficiency in their work, so they can improve their lives, environment, and livelihood — and preserve the environment for generations to come.</li>
+  </ul>
+
+  <h2>🛡️ Brand Stance</h2>
+  <p>When customers think of Balizen, they think of a company that helps people &amp; the planet by providing beautiful, hand-crafted, and fairly priced products — knowing it was made in accordance with <span class="g">fair trade<span class="tip"><b>Language rule</b>Balizen is a verified <em>member</em> of the Fair Trade Federation. Say "Fair Trade Federation member" — never "certified."</span></span> values and with joy &amp; love, all in a welcoming and homey environment.</p>
+
+  <h2>🏷️ Brand Attributes</h2>
+  <p>Characteristics customers tell us matter most to their purchasing decisions:</p>
+  <ul class="plain">
+    <li>Fair trade · Handcrafted · Beautifully made</li>
+    <li>Extraordinary color combinations · Natural elegance · Love for details</li>
+    <li>Quality products · Reasonably priced</li>
+    <li>Great customer service · Friendly staff</li>
+    <li>A bit of Bali to take home with you</li>
+  </ul>
+  <div class="next"><a href="#home">← The Brand</a><a href="#experience">Brand Experience →</a></div>
+</section>
+
+<!-- ============ EXPERIENCE ============ -->
+<section class="page" id="p-experience">
+  <div class="eyebrow">Section 1 · The Brand</div>
+  <h1>Brand Experience.</h1>
+  <p class="lede">The Balizen brand experience defines our customers' interaction with our company, its products, people, and communications. When customers interact with Balizen, we want their experience to be:</p>
+  <div class="callout"><h3>🍎 Educational about the crafts &amp; culture</h3><p style="margin:0">Nurturing appreciation, not taking it for granted — learning the context and story behind rich traditions and techniques. A connection of craft between cultures and time periods. Encouraging self-exploration.</p></div>
+  <div class="callout"><h3>✨ Exceptional value</h3><p style="margin:0">The quality and attention to detail of the products far exceeds expectations.</p></div>
+  <div class="callout"><h3>👱‍♀️ Tailored, friendly-homey</h3><p style="margin:0">Like talking to an old friend. Understanding the customer's needs, making them feel exceptionally cared for.</p></div>
+  <div class="callout"><h3>🎨 A cohesive, distinct design sensibility</h3><p style="margin:0">Distinct color stories inspired by nature. Capsule-wardrobe-style modular products that mix and match — and always work together.</p></div>
+
+  <h2>Experience standards</h2>
+  <h3>📣 Communications should always be</h3>
+  <ul class="plain">
+    <li><strong>Clear, engaging, straightforward</strong> — language and visuals appropriate to the audience.</li>
+    <li><strong>Friendly and welcoming</strong> — approachable, never overbearing or aggressive.</li>
+    <li><strong>Real and relevant</strong> — honest, addressing what matters most to the customer.</li>
+    <li><strong>Surprising and fresh</strong> — as creative as our products.</li>
+  </ul>
+  <h3>🛍️ Products &amp; services should always be</h3>
+  <ul class="plain">
+    <li><strong>✨ High quality</strong> — exceptional, exceeding expectations.</li>
+    <li><strong>🌿 Naturally elegant</strong> — effortless, functional, multi-purpose. From holiday to home.</li>
+    <li><strong>🎁 Spreading joy</strong> — to you, your home, and your loved ones. <span class="g">From smile to smile<span class="tip"><b>Core language</b>Balizen's signature line. Non-negotiable — never rewritten, never replaced by "luxury" framing. Full line: "Create with love. Share with joy. Connect from smile to smile."</span></span>.</li>
+    <li><strong>🌈 Delighting all the senses</strong> — textures of the clothing, smells of the vetiver, colors of the designs.</li>
+    <li><strong>💎 Unique</strong> — original and distinctive Balizen designs.</li>
+  </ul>
+  <h3>👥 Interactions with people should make customers feel we are</h3>
+  <ul class="plain">
+    <li><strong>Straightforward and efficient</strong> — questions handled quickly and smoothly.</li>
+    <li><strong>Respectful and confident</strong> — knowledgeable, never arrogant.</li>
+    <li><strong>Great listeners, full of empathy</strong> — anticipating needs; ease for the customer, not convenience for staff.</li>
+    <li><strong>Style guides</strong> — helping customers choose what's best for their needs and home.</li>
+  </ul>
+  <div class="next"><a href="#story">← Brand Story</a><a href="#voice">Voice &amp; Tone →</a></div>
+</section>
+
+<!-- ============ VOICE ============ -->
+<section class="page" id="p-voice">
+  <div class="eyebrow">Voice &amp; Tone Guide · V3</div>
+  <h1>Voice &amp; Tone.</h1>
+  <p class="lede">At Balizen, we speak the way we make — with care, warmth, and unhurried attention. Our voice carries the generosity of a family that has been doing this for over thirty years.</p>
+  <p>We don't lecture about sustainability. Our audience already lives these values — we simply invite them in. Our making philosophy applies to what we write: <strong>Create with love. Share with joy. Connect <span class="g">from smile to smile<span class="tip"><b>Core language</b>The signature line. It closes reels, anchors captions, and is never paraphrased.</span></span>.</strong></p>
+
+  <h2>1 · Lead with joy, not guilt</h2>
+  <div class="dodont">
+    <div class="do"><span class="tag">Do</span><em>"Beautiful things, made beautifully. That's the whole story."</em></div>
+    <div class="dont"><span class="tag">Don't</span><em>"Millions of tons of fast fashion end up in landfills. Choose better."</em></div>
+  </div>
+  <h2>2 · Invite, don't sell</h2>
+  <div class="dodont">
+    <div class="do"><span class="tag">Do</span><em>"Come in. Stay a while. Take something home that makes you smile."</em></div>
+    <div class="dont"><span class="tag">Don't</span><em>"Limited stock! Order now before this collection sells out forever!"</em></div>
+  </div>
+  <h2>3 · Name the people, not just the process</h2>
+  <div class="dodont">
+    <div class="do"><span class="tag">Do</span><em>"Gede carved this from reclaimed wood in his village workshop. He's been with us since 2003."</em></div>
+    <div class="dont"><span class="tag">Don't</span><em>"Handcrafted by skilled artisans using traditional techniques."</em></div>
+  </div>
+  <h2>4 · Keep it simple and sensory</h2>
+  <div class="dodont">
+    <div class="do"><span class="tag">Do</span><em>"Hand-stamped cotton. Sun-dried vetiver. The smell of Bali, wherever you are."</em></div>
+    <div class="dont"><span class="tag">Don't</span><em>"100% organic, sustainably harvested, certified vetiver root…"</em></div>
+  </div>
+  <h2>5 · Grow together</h2>
+  <div class="dodont">
+    <div class="do"><span class="tag">Do</span><em>"Thirty years of making, thanks to people like you."</em></div>
+    <div class="dont"><span class="tag">Don't</span><em>"We value your continued patronage."</em></div>
+  </div>
+
+  <h2>Words</h2>
+  <table>
+    <tr><th>We love</th><th>We avoid</th></tr>
+    <tr>
+      <td>Handmade · Gathered · Natural · Rooted · Slow · Warm · Home · Together · Craft · Village · Care · Smile · Joy · Woven · Island</td>
+      <td>Leverage · Optimize · Premium · Exclusive · <span class="g">Luxury<span class="tip"><b>Banned</b>"Luxury" and "Quiet Luxury" framing are explicitly rejected per the V&amp;T Guide. No exceptions.</span></span> · Curate (overused) · Artisanal (generic use)</td>
+    </tr>
+  </table>
+  <div class="next"><a href="#experience">← Brand Experience</a><a href="#color">Color →</a></div>
+</section>
+
+<!-- ============ COLOR ============ -->
+<section class="page" id="p-color">
+  <div class="eyebrow">Section 2 · Identity System</div>
+  <h1>Color.</h1>
+  <p class="lede">Color brings our brand to life. Used simply and with balance, it communicates clarity, consistency, and natural elegance — distinct color stories inspired by nature.</p>
+  <h2>Core palette</h2>
+  <div class="swatches">
+    <div class="sw"><div class="chip" style="background:#3BA3AB"></div><div class="meta"><b>Balizen Teal</b><code>#3BA3AB</code><span class="use">Primary. Headings, accents, brand moments.</span></div></div>
+    <div class="sw"><div class="chip" style="background:#2B7A80"></div><div class="meta"><b>Teal Dark</b><code>#2B7A80</code><span class="use">Shade for text on light backgrounds.</span></div></div>
+    <div class="sw"><div class="chip" style="background:#E9F4F5;border-bottom:1px solid var(--line)"></div><div class="meta"><b>Teal Tint</b><code>#E9F4F5</code><span class="use">Panels, highlights, soft fills.</span></div></div>
+    <div class="sw"><div class="chip" style="background:#F5F1E8;box-shadow:inset 0 0 0 1px var(--line)"></div><div class="meta"><b>Cream</b><code>#F5F1E8</code><span class="use">Panels &amp; cards. Airy, warm.</span></div></div>
+    <div class="sw"><div class="chip" style="background:#A8B569"></div><div class="meta"><b>Tree Hugger</b><code>#A8B569</code><span class="use">Sparingly — nature accents.</span></div></div>
+    <div class="sw"><div class="chip" style="background:#485760"></div><div class="meta"><b>Payne's Grey</b><code>#485760</code><span class="use">Sparingly — body text, grounding.</span></div></div>
+  </div>
+  <h2>Extended palette</h2>
+  <p>Reserved for product and seasonal work — not default document colors.</p>
+  <div class="swatches">
+    <div class="sw"><div class="chip" style="background:#F0C971"></div><div class="meta"><b>Glow</b><code>#F0C971</code></div></div>
+    <div class="sw"><div class="chip" style="background:#EFBFBF"></div><div class="meta"><b>Blush</b><code>#EFBFBF</code></div></div>
+    <div class="sw"><div class="chip" style="background:#D87B3D"></div><div class="meta"><b>Spice</b><code>#D87B3D</code></div></div>
+    <div class="sw"><div class="chip" style="background:#F26722"></div><div class="meta"><b>Spice Accent</b><code>#F26722</code></div></div>
+  </div>
+  <div class="callout sage"><p style="margin:0"><strong>Usage note:</strong> internal &amp; customer-facing documents stay monochrome/minimalist — teal family first, Tree Hugger, Cream and Payne's Grey used sparingly. Spice and Blush only when explicitly called for.</p></div>
+  <div class="next"><a href="#voice">← Voice &amp; Tone</a><a href="#type">Typography →</a></div>
+</section>
+
+<!-- ============ TYPE ============ -->
+<section class="page" id="p-type">
+  <div class="eyebrow">Section 2 · Identity System</div>
+  <h1>Typography.</h1>
+  <p class="lede">Type tells a story. A thin, light serif leads; a rounded sans carries the reading. Light and airy, consistent with balizenhome.com.</p>
+  <div class="spec"><div class="label">Heading 1a · Scotch Display Light</div><div class="sample-h1">A bit of Bali to take home with you.</div><div class="note">Shown here in Playfair Display (Heading 1b &amp; free web stand-in). Production wiki loads real Scotch Display via Adobe Fonts.</div></div>
+  <div class="spec"><div class="label">Heading 2 · Superclarendon Regular</div><div class="sample-h2">Handmade · fair trade · eco-friendly</div><div class="note">Serif fallback shown. Office fallback: Cambria.</div></div>
+  <div class="spec"><div class="label">Body · Area Inktrap Regular</div><div class="sample-body">Hand silk-screened textiles, homewares, and resort wear — rooted in artisan relationships since 1992. Soft cotton, rich indigo. Made to be lived in.</div><div class="note">Shown here in Instrument Sans (free stand-in). Production loads real Area Inktrap via Adobe Fonts. Office fallback: Calibri.</div></div>
+  <h2>Principles</h2>
+  <ul class="plain">
+    <li>Sentence and title case only — avoid all caps.</li>
+    <li>Generous leading and clear space; type should never feel crowded.</li>
+    <li>Body copy carries most of the page; display faces are used with restraint.</li>
+  </ul>
+  <div class="next"><a href="#color">← Color</a><a href="#logo">Logo →</a></div>
+</section>
+
+<!-- ============ LOGO ============ -->
+<section class="page" id="p-logo">
+  <div class="eyebrow">Section 2 · Identity System</div>
+  <h1>Logo.</h1>
+  <p class="lede">The Balizen wordmark is quiet and confident. In teal, cream, or reversed, it works across all media — present, but never domineering.</p>
+  <div class="logo-demo">
+    <div style="background:#fff;color:var(--teal)">Balizen</div>
+    <div style="background:var(--teal);color:var(--cream)">Balizen</div>
+    <div style="background:#000;color:#fff">Balizen</div>
+    <div style="background:var(--hugger);color:var(--cream)">Balizen</div>
+  </div>
+  <h2>Standards</h2>
+  <ul class="plain">
+    <li><strong>Clear space</strong> — maintain adequate clear space so the wordmark is seen quickly, uncluttered by other logos or text.</li>
+    <li><strong>Variations</strong> — wordmark, "Since 1992" lockup with descriptors (handmade · fair trade · eco-friendly), and the teal circle badge.</li>
+    <li><strong>Fair Trade Federation mark</strong> — the <span class="g">FTF verified mark<span class="tip"><b>Language rule</b>Verified member of the Fair Trade Federation. The mark says "VERIFIED" — our copy says "member," never "certified."</span></span> appears on reel end frames and packaging alongside the wordmark.</li>
+    <li><strong>Contrast</strong> — any color fill should hold strong contrast against its background.</li>
+  </ul>
+  <div class="next"><a href="#type">← Typography</a><a href="#social">Social Media →</a></div>
+</section>
+
+<!-- ============ SOCIAL ============ -->
+<section class="page" id="p-social">
+  <div class="eyebrow">Section 3 · Applications</div>
+  <h1>Social Media.</h1>
+  <p class="lede">Conversational, warm, personal. Behind-the-scenes moments, artisan stories, the workshop in morning light. Captions short and human.</p>
+  <div class="callout"><p style="margin:0"><em>"Morning in the workshop. Ketut is finishing a new batch of capiz chimes. You can hear the ocean in them. 🐚"</em></p></div>
+  <h2>Caption discipline</h2>
+  <ul class="plain">
+    <li>Lead with feeling and a real human detail — not a product listing.</li>
+    <li>Atmospheric or sensory details must be <strong>observed or reported, never invented</strong>.</li>
+    <li>Understated, natural copy outperforms enthusiastic selling language.</li>
+    <li>Close reels with the <span class="g">end frame system<span class="tip"><b>Style guide</b>Reel end frames: Balizen wordmark, FTF mark, or "From smile to smile" — on teal, spice, sage, or black.</span></span>.</li>
+  </ul>
+  <h2>Platform rules — Instagram</h2>
+  <ul class="plain">
+    <li><strong>Hashtags:</strong> maximum five per post.</li>
+    <li><strong>SEO:</strong> the caption carries all indexing weight — per-slide carousel captions do not index.</li>
+    <li><strong>Boostable formats:</strong> carousels must be 1:1 or 4:5. Trending/library music and interactive stickers block boosting.</li>
+    <li><strong>Metrics:</strong> profile visits over link clicks for brand-discovery goals.</li>
+  </ul>
+  <h2>Proven ad formulas</h2>
+  <ul class="plain">
+    <li>Artisan craft storytelling — named people, real workshops, specific techniques.</li>
+    <li>Brand personality / vibe content — the feeling of the stores and the island.</li>
+  </ul>
+  <div class="next"><a href="#logo">← Logo</a><span></span></div>
+</section>
+
+</main>
+</div>
+
+<script>
+const pages=document.querySelectorAll('.page');
+const links=document.querySelectorAll('nav a');
+function closeNav(){document.querySelector('aside').classList.remove('open');document.querySelector('.scrim').classList.remove('on')}
+function route(){
+  let h=(location.hash||'#home').slice(1);
+  if(!document.getElementById('p-'+h))h='home';
+  pages.forEach(p=>p.classList.toggle('active',p.id==='p-'+h));
+  links.forEach(a=>a.classList.toggle('on',a.dataset.p===h));
+  closeNav();window.scrollTo(0,0);
+}
+window.addEventListener('hashchange',route);route();
+/* tap-to-toggle tooltips on touch */
+document.querySelectorAll('.g').forEach(g=>{
+  g.addEventListener('click',e=>{e.stopPropagation();document.querySelectorAll('.g.tap').forEach(o=>{if(o!==g)o.classList.remove('tap')});g.classList.toggle('tap')});
+});
+document.addEventListener('click',()=>document.querySelectorAll('.g.tap').forEach(o=>o.classList.remove('tap')));
+</script>
+</body>
+</html>

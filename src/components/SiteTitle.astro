@@ -1,0 +1,31 @@
+---
+/** Prototype wordmark: serif "Balizen" over a small letter-spaced "Brand Wiki". */
+const { siteTitleHref } = Astro.locals.starlightRoute;
+---
+
+<a href={siteTitleHref} class="site-title">
+	<span class="wordmark">Balizen</span>
+	<span class="wordsub">Brand Wiki</span>
+</a>
+
+<style>
+	.site-title {
+		display: flex;
+		flex-direction: column;
+		gap: 0;
+		text-decoration: none;
+		line-height: 1.2;
+	}
+	.wordmark {
+		font-family: var(--font-serif);
+		font-size: 1.5rem;
+		color: var(--teal-dark);
+		letter-spacing: 0.06em;
+	}
+	.wordsub {
+		font-size: 0.62rem;
+		letter-spacing: 0.24em;
+		text-transform: uppercase;
+		color: var(--teal);
+	}
+</style>

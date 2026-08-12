@@ -1,0 +1,6 @@
+{/* Light-only site, per the approved prototype: white page, airy, no dark mode. */}
+<script is:inline>
+	document.documentElement.dataset.theme = 'light';
+	// Some Starlight internals expect this global to exist.
+	window.StarlightThemeProvider = { updatePickers() {} };
+</script>

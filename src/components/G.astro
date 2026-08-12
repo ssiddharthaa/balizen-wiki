@@ -1,0 +1,32 @@
+---
+/**
+ * <G term="..."> — manual glossary tooltip for MDX pages.
+ * Looks the term up in data/glossary.json (which mirrors the Notion Correct
+ * Terms Glossary — it never freelances). Manual use always wins: the remark
+ * plugin skips auto-wrapping any term used manually on a page.
+ *
+ * Usage:  <G term="vetiver" />           → renders the term itself
+ *         <G term="vetiver">roots</G>    → renders custom display text
+ */
+import glossary from '../../data/glossary.json';
+
+interface Props {
+	term: string;
+}
+
+const { term } = Astro.props;
+const entry = glossary.terms.find((t) => t.term.toLowerCase() === term.toLowerCase());
+if (!entry) {
+	throw new Error(
+		`<G term="${term}"> — term not found in data/glossary.json. ` +
+			`The JSON mirrors the Correct Terms Glossary; add the term there first.`
+	);
+}
+const hasChildren = Astro.slots.has('default');
+---
+
+<span class="g" tabindex="0"
+	>{hasChildren ? <slot /> : term}<span class="tip" role="tooltip"
+		><b>Glossary</b>{entry.tip}{entry.link && <a href={entry.link}>See page&nbsp;→</a>}</span
+	></span
+>

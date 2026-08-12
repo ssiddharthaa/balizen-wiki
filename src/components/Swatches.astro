@@ -1,0 +1,39 @@
+---
+/**
+ * Live color swatches, rendered from data/tokens.json — the single source for
+ * all colors. Pass token keys from tokens.brand; name/note text comes from the
+ * page (transcribed from the source document).
+ *
+ * Usage:
+ *   <Swatches items={[{ token: 'balizen-teal', name: 'Balizen Teal', note: 'Primary' }, …]} />
+ */
+import tokens from '../../data/tokens.json';
+
+interface Props {
+	items: { token: keyof typeof tokens.brand; name: string; note?: string }[];
+}
+
+const { items } = Astro.props;
+const resolved = items.map((item) => {
+	const hex = tokens.brand[item.token];
+	if (!hex) throw new Error(`Swatches: token "${item.token}" not found in data/tokens.json`);
+	return { ...item, hex };
+});
+---
+
+{/* `not-content` opts out of Starlight's markdown sibling spacing, which would
+    otherwise add margin-top to every card after the first and break the grid. */}
+<div class="swatches not-content">
+	{
+		resolved.map(({ name, hex, note }) => (
+			<div class="sw">
+				<div class="chip" style={`background:${hex}`} />
+				<div class="meta">
+					<b>{name}</b>
+					<code>{hex}</code>
+					{note && <span class="use">{note}</span>}
+				</div>
+			</div>
+		))
+	}
+</div>

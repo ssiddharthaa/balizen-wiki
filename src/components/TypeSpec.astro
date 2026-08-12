@@ -1,0 +1,22 @@
+---
+/**
+ * Type specimen block, per the prototype's .spec styling.
+ * `variant` picks the sample rendering; label/sample/note come from the page.
+ */
+interface Props {
+	label: string;
+	sample: string;
+	note?: string;
+	variant: 'h1' | 'h2' | 'h3' | 'body';
+}
+
+const { label, sample, note, variant } = Astro.props;
+---
+
+{/* `not-content`: we style this block ourselves; Starlight's markdown spacing
+    would add stray margins between the label, sample, and note. */}
+<div class="spec not-content">
+	<div class="label">{label}</div>
+	<div class={`sample-${variant}`}>{sample}</div>
+	{note && <div class="note">{note}</div>}
+</div>

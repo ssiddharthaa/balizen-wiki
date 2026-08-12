@@ -1,0 +1,147 @@
+---
+/**
+ * Head override: default Starlight head + brand fonts + design tokens.
+ * Design tokens are injected as CSS custom properties straight from
+ * data/tokens.json — the single source for all colors (do not hardcode hexes
+ * in stylesheets; reference the variables below).
+ */
+import Default from '@astrojs/starlight/components/Head.astro';
+import tokens from '../../data/tokens.json';
+
+const cssVars = [
+	...Object.entries(tokens.ui).map(([k, v]) => `--ui-${k}: ${v};`),
+	...Object.entries(tokens.brand).map(([k, v]) => `--${k}: ${v};`),
+	// Prototype-compatible aliases used throughout custom.css
+	`--teal: ${tokens.brand['balizen-teal']};`,
+	`--hugger: ${tokens.brand['tree-hugger']};`,
+	`--grey: ${tokens.brand['paynes-grey']};`,
+	`--panel: ${tokens.ui.panel};`,
+	`--ink: ${tokens.ui.ink};`,
+	`--line: ${tokens.ui.line};`,
+].join(' ');
+---
+
+<Default><slot /></Default>
+
+{/* Free web fonts (brand-approved fallbacks): Playfair Display (Heading 1b) + Instrument Sans */}
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+	href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+	rel="stylesheet"
+/>
+
+{/*
+	==================================================================
+	ADOBE FONTS WEB PROJECT EMBED — PLACEHOLDER
+	Sid: paste the Adobe Fonts embed <link> line for the Web Project
+	(Scotch Display Light + Area Inktrap Regular/ExtraBold) directly
+	below this comment. Then confirm the family names in
+	src/styles/custom.css (--font-serif / --font-sans) match the names
+	in the kit's CSS.
+	==================================================================
+*/}
+
+<style set:html={`:root{${cssVars}}`}></style>
+
+{/*
+	Glossary tooltips: tap-to-toggle on touch (CSS handles hover/focus on desktop),
+	plus positioning.
+
+	Progressive enhancement: the tooltip is absolutely positioned by CSS, which
+	works everywhere except inside a clipping ancestor — and Starlight gives
+	tables `overflow-x: auto` for mobile scrolling, which would clip tooltips on
+	the Correct Terms Glossary (a page that is almost entirely tables). While a
+	tooltip is shown, this script re-positions it as `fixed` so it escapes any
+	clipping context. Without JS, hover tooltips still work outside tables.
+*/}
+<script is:inline>
+	(() => {
+		const MARGIN = 8;
+		let pinned = null;
+
+		const place = (g) => {
+			const tip = g.querySelector('.tip');
+			if (!tip) return;
+			tip.style.position = 'fixed';
+			tip.style.transform = 'none';
+			tip.style.left = '0';
+			tip.style.top = 'auto';
+			tip.style.bottom = 'auto';
+			const gr = g.getBoundingClientRect();
+			// offsetWidth/offsetHeight force layout and are reliable here;
+			// the bubble is anchored by `bottom` in the common case so its height
+			// never has to be trusted for placement — only for the flip decision.
+			const w = tip.offsetWidth;
+			const h = tip.offsetHeight;
+			// Centred on the term, clamped into the viewport.
+			let left = gr.left + gr.width / 2 - w / 2;
+			left = Math.max(MARGIN, Math.min(left, innerWidth - w - MARGIN));
+			const below = gr.top - h - 10 < MARGIN; // no room above — flip below
+			tip.style.left = left + 'px';
+			if (below) {
+				tip.style.top = gr.bottom + 10 + 'px';
+			} else {
+				tip.style.bottom = innerHeight - gr.top + 10 + 'px';
+			}
+			// Keep the arrow pointing at the term even when the bubble is clamped.
+			tip.style.setProperty('--arrow-x', gr.left + gr.width / 2 - left + 'px');
+			tip.classList.toggle('below', below);
+		};
+
+		const clear = (g) => {
+			const tip = g.querySelector('.tip');
+			if (!tip) return;
+			tip.style.position = '';
+			tip.style.left = '';
+			tip.style.top = '';
+			tip.style.bottom = '';
+			tip.style.transform = '';
+			tip.style.removeProperty('--arrow-x');
+			tip.classList.remove('below');
+		};
+
+		const unpin = () => {
+			if (!pinned) return;
+			pinned.classList.remove('tap');
+			clear(pinned);
+			pinned = null;
+		};
+
+		document.addEventListener('pointerover', (e) => {
+			const g = e.target.closest?.('.g');
+			if (g && g !== pinned) place(g);
+		});
+		document.addEventListener('pointerout', (e) => {
+			const g = e.target.closest?.('.g');
+			if (g && g !== pinned && !g.contains(e.relatedTarget)) clear(g);
+		});
+		document.addEventListener('focusin', (e) => {
+			const g = e.target.closest?.('.g');
+			if (g) place(g);
+		});
+		document.addEventListener('focusout', (e) => {
+			const g = e.target.closest?.('.g');
+			if (g && g !== pinned) clear(g);
+		});
+
+		// Tap to toggle on touch.
+		document.addEventListener('click', (e) => {
+			if (e.target.closest('.g .tip a')) return; // let tooltip links navigate
+			const g = e.target.closest('.g');
+			if (pinned && pinned !== g) unpin();
+			if (!g) return;
+			if (g === pinned) {
+				unpin();
+			} else {
+				pinned = g;
+				g.classList.add('tap');
+				place(g);
+			}
+		});
+
+		addEventListener('scroll', () => pinned && place(pinned), { passive: true });
+		addEventListener('resize', () => pinned && place(pinned));
+		addEventListener('keydown', (e) => e.key === 'Escape' && unpin());
+	})();
+</script>

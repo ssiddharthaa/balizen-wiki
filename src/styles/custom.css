@@ -1,0 +1,378 @@
+/* =============================================================
+   Balizen Brand Wiki — theme
+   Matches prototype/balizen-brand-wiki-prototype.html.
+   ALL colors come from data/tokens.json, injected as CSS custom
+   properties by src/components/Head.astro (--teal, --teal-dark,
+   --teal-tint, --panel, --cream, --hugger, --grey, --ink, --line).
+   Exception: the do/don't "muted clay" pair, taken from the
+   approved prototype itself (see the dodont section below).
+   Light and airy · minimal borders · sentence/title case only.
+   ============================================================= */
+
+:root {
+	/* 'scotch-display' / 'area-inktrap' are forward-compatible slots for the
+	   Adobe Fonts Web Project (embed placeholder in src/components/Head.astro).
+	   Until the kit loads, Playfair Display (Heading 1b) and Instrument Sans
+	   carry the site. Confirm the Adobe family names against the kit's CSS. */
+	--font-serif: 'scotch-display', 'Playfair Display', Cambria, serif;
+	--font-sans: 'area-inktrap', 'Instrument Sans', Calibri, sans-serif;
+	--sl-font: var(--font-sans);
+	color-scheme: light;
+}
+
+/* ---------- Starlight variable mapping (light-only site) ---------- */
+:root,
+:root[data-theme='light'] {
+	--sl-color-accent-low: var(--teal-tint);
+	--sl-color-accent: var(--teal);
+	--sl-color-accent-high: var(--teal-dark);
+	--sl-color-white: var(--ink);
+	--sl-color-text: var(--ink);
+	--sl-color-text-accent: var(--teal-dark);
+	--sl-color-bg: var(--ui-page-bg);
+	--sl-color-bg-nav: var(--ui-page-bg);
+	--sl-color-bg-sidebar: var(--ui-sidebar-bg);
+	--sl-color-bg-inline-code: var(--panel);
+	--sl-color-bg-accent: var(--teal);
+	--sl-color-hairline-light: var(--line);
+	--sl-color-hairline: var(--line);
+	--sl-color-hairline-shade: var(--line);
+	--sl-content-width: 45rem; /* 720px, per prototype */
+}
+
+body {
+	-webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Sidebar, per prototype ---------- */
+.sidebar-pane {
+	border-inline-end: 1px solid var(--line);
+}
+/* The prototype's nav groups are flat and always open — no collapse affordance.
+   Starlight renders them as <details>; hide the chevron and disable toggling. */
+.sidebar-content details > summary {
+	pointer-events: none;
+}
+.sidebar-content details > summary .caret {
+	display: none;
+}
+.sidebar-content .group-label > span {
+	font-size: 0.66rem;
+	font-weight: 400;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+	color: var(--grey);
+	opacity: 0.55;
+}
+.sidebar-content a {
+	border-radius: 8px;
+	font-size: 0.94rem;
+	color: var(--ink);
+	transition: background 0.15s;
+}
+.sidebar-content a:hover {
+	background: var(--teal-tint);
+	color: var(--ink);
+}
+.sidebar-content a[aria-current='page'],
+.sidebar-content a[aria-current='page']:hover {
+	background: var(--teal-tint);
+	color: var(--teal-dark);
+	font-weight: 600;
+}
+
+/* ---------- Content typography, per prototype ---------- */
+.sl-markdown-content {
+	font-size: 1.03125rem; /* 16.5px */
+	line-height: 1.75;
+}
+.sl-markdown-content h2 {
+	font-family: var(--font-serif);
+	font-weight: 500;
+	font-size: 1.5rem;
+	color: var(--teal-dark);
+	margin-top: 2.75rem;
+}
+.sl-markdown-content h3 {
+	font-family: var(--font-sans);
+	font-size: 1rem;
+	font-weight: 600;
+	color: var(--grey);
+	margin-top: 1.75rem;
+}
+.sl-markdown-content a:not(:where(.not-content *)) {
+	color: var(--teal-dark);
+	text-decoration: underline;
+	text-decoration-color: var(--teal);
+	text-underline-offset: 3px;
+}
+.sl-markdown-content li::marker {
+	color: var(--hugger);
+}
+.sl-markdown-content hr {
+	border: none;
+	border-top: 1px solid var(--line);
+	margin: 2.5rem 0;
+}
+.sl-markdown-content strong {
+	color: var(--grey);
+}
+
+/* Blockquotes render as prototype callouts: panel fill, teal edge. */
+.sl-markdown-content blockquote:not(:where(.not-content *)) {
+	background: var(--panel);
+	border-inline-start: 3px solid var(--teal);
+	border-radius: 0 12px 12px 0;
+	padding: 1.25rem 1.5rem;
+	margin: 1.25rem 0;
+	font-size: inherit;
+	color: var(--ink);
+}
+
+/* ---------- Tables, per prototype ---------- */
+/* NOTE: no `overflow: hidden` here — it would clip glossary tooltips that rise
+   out of table cells (the Correct Terms Glossary is all tables). Corners are
+   rounded via the header cells instead, which needs `border-collapse: separate`
+   for cell radii to take effect. */
+.sl-markdown-content table:not(:where(.not-content *)) {
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 0;
+	background: var(--panel);
+	border-radius: 12px;
+	font-size: 0.94rem;
+}
+.sl-markdown-content table:not(:where(.not-content *)) th:first-child {
+	border-top-left-radius: 12px;
+}
+.sl-markdown-content table:not(:where(.not-content *)) th:last-child {
+	border-top-right-radius: 12px;
+}
+.sl-markdown-content th:not(:where(.not-content *)) {
+	background: var(--teal-tint);
+	color: var(--teal-dark);
+	text-align: left;
+	padding: 0.7rem 1rem;
+	font-size: 0.75rem;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	border: none;
+}
+.sl-markdown-content td:not(:where(.not-content *)) {
+	padding: 0.7rem 1rem;
+	border: none;
+	border-top: 1px solid var(--line);
+	vertical-align: top;
+}
+
+/* Do/don't tables (Correct Terms Glossary): teal top-border for "Use ✅",
+   muted clay for "Don't Use ❌". Clay pair (#D8A38C / #B96A4B) comes from the
+   approved prototype's .do/.dont components — deliberately not a brand token. */
+.sl-markdown-content table.dodont th.col-do {
+	border-top: 3px solid var(--teal);
+	color: var(--teal-dark);
+}
+.sl-markdown-content table.dodont th.col-dont {
+	border-top: 3px solid #d8a38c;
+	color: #b96a4b;
+}
+
+/* ---------- Glossary tooltips (the signature) ---------- */
+.g {
+	position: relative;
+	color: var(--teal-dark);
+	border-bottom: 1.5px dotted var(--teal);
+	cursor: help;
+}
+.g .tip {
+	position: absolute;
+	bottom: calc(100% + 10px);
+	left: 50%;
+	transform: translateX(-50%) translateY(4px);
+	width: min(280px, 74vw);
+	background: var(--grey);
+	color: var(--cream);
+	font-family: var(--font-sans);
+	font-size: 0.84rem;
+	line-height: 1.55;
+	font-weight: 400;
+	font-style: normal;
+	padding: 12px 15px;
+	border-radius: 11px;
+	opacity: 0;
+	pointer-events: none;
+	transition: 0.18s;
+	z-index: 20;
+}
+.g .tip b {
+	color: #fff;
+	display: block;
+	font-size: 0.72rem;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	margin-bottom: 4px;
+}
+.g .tip::after {
+	content: '';
+	position: absolute;
+	top: 100%;
+	/* --arrow-x is set by the positioning script when the bubble is clamped to
+	   the viewport edge; it falls back to centred. */
+	left: var(--arrow-x, 50%);
+	transform: translateX(-50%);
+	border: 7px solid transparent;
+	border-top-color: var(--grey);
+}
+/* Flipped below the term when there isn't room above. */
+.g .tip.below::after {
+	top: auto;
+	bottom: 100%;
+	border-top-color: transparent;
+	border-bottom-color: var(--grey);
+}
+.g:hover .tip,
+.g:focus-visible .tip,
+.g.tap .tip {
+	opacity: 1;
+	transform: translateX(-50%);
+	pointer-events: auto;
+}
+/* While the script has it fixed-positioned, left/top are absolute coordinates —
+   the centring transform must not be re-applied. */
+.g .tip[style*='position: fixed'] {
+	transform: none !important;
+}
+.g .tip a {
+	color: var(--teal-tint);
+	display: block;
+	margin-top: 6px;
+	font-size: 0.8rem;
+}
+
+/* ---------- Identity page: swatches + type specimens ---------- */
+.swatches {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+	gap: 14px;
+	margin: 1.375rem 0;
+}
+.sw {
+	border-radius: 14px;
+	overflow: hidden;
+	background: var(--panel);
+	border: 1px solid var(--line);
+}
+.sw .chip {
+	height: 88px;
+	box-shadow: inset 0 0 0 1px var(--line); /* keeps light chips visible */
+}
+.sw .meta {
+	padding: 11px 14px;
+	font-size: 0.81rem;
+}
+.sw .meta b {
+	display: block;
+	font-size: 0.875rem;
+	color: var(--grey);
+}
+.sw .meta code {
+	font-family: var(--sl-font-system-mono, monospace);
+	background: none;
+	padding: 0;
+	color: var(--teal-dark);
+	font-size: 0.78rem;
+}
+.sw .meta .use {
+	font-size: 0.72rem;
+	color: var(--grey);
+	opacity: 0.75;
+	line-height: 1.4;
+	display: block;
+	margin-top: 3px;
+}
+
+.spec {
+	background: var(--panel);
+	border-radius: 14px;
+	padding: 1.625rem 1.75rem;
+	margin: 1rem 0;
+	border: 1px solid var(--line);
+}
+.spec .label {
+	font-size: 0.66rem;
+	letter-spacing: 0.22em;
+	text-transform: uppercase;
+	color: var(--teal);
+	margin-bottom: 10px;
+}
+.spec .sample-h1 {
+	font-family: var(--font-serif);
+	font-weight: 400;
+	font-size: 2.125rem;
+	color: var(--teal-dark);
+	line-height: 1.2;
+}
+.spec .sample-h2 {
+	font-family: var(--font-serif);
+	font-weight: 500;
+	font-size: 1.4375rem;
+	color: var(--teal-dark);
+}
+.spec .sample-h3 {
+	font-family: var(--font-sans);
+	font-weight: 600;
+	font-size: 1rem;
+	color: var(--grey);
+}
+.spec .sample-body {
+	font-family: var(--font-sans);
+	font-size: 1.03125rem;
+}
+.spec .note {
+	font-size: 0.78rem;
+	color: var(--grey);
+	opacity: 0.7;
+	margin-top: 10px;
+}
+
+/* ---------- Right rail ("On this page") — whisper-level ---------- */
+.right-sidebar {
+	border-inline-start: 1px solid var(--line);
+}
+.right-sidebar h2 {
+	font-size: 0.66rem;
+	font-weight: 400;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+	color: var(--grey);
+	opacity: 0.55;
+}
+
+/* ---------- Pagination (prev/next), per prototype's .next ---------- */
+.pagination-links a {
+	border: none;
+	box-shadow: none;
+	border-radius: 10px;
+	background: none;
+	padding: 0.5rem 0.25rem;
+}
+.pagination-links a:hover {
+	background: var(--teal-tint);
+}
+.pagination-links .link-title {
+	color: var(--teal-dark);
+	font-size: 0.94rem;
+	font-weight: 600;
+}
+.pagination-links {
+	border-top: 1px solid var(--line);
+	padding-top: 1.375rem;
+	margin-top: 3rem;
+}
+
+/* ---------- Airier content padding on wide screens ---------- */
+@media (min-width: 72rem) {
+	:root {
+		--sl-content-pad-x: 2.5rem;
+	}
+}
