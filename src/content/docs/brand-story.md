@@ -12,7 +12,7 @@ States where we are going as a company and what we want to be:
 
 **Product layer:**
 
-The go-to source of beautifully designed, lovingly crafted, nature inspired, accessible, joyful homewares, slow fashion & gifts that make people smile - handmade in Bali & Java.
+The go-to source of beautifully designed, lovingly crafted, nature inspired, accessible, joyful homewares, slow fashion & gifts that make people smile - handmade in Bali and other parts of the Indonesian archipelago.
 
 **Impact layer:**
 

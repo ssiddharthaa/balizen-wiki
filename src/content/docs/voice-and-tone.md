@@ -33,11 +33,11 @@ For people just discovering Balizen, this is often the hook. It answers the firs
 - **New audiences** (first touch, About pages, wholesale intros, tourist encounters) — state it early and plainly. It's the fastest trust-builder we have.
 - **Warm audiences** (email, repeat customers, social regulars) — quiet confidence. A line near the end, not the headline.
 - **Always pair the credential with the human story.** The membership proves the relationship; the artisans *are* the relationship.
-- **Language rules live in the Correct Terms Glossary** — *we* are members; products are not "certified."
+- **Language rules live in the Correct Terms Glossary** — *we* are verified members; products are never "verified" or "certified."
 
 **Example:**
 
-✅ *"Fair Trade Federation member for over twenty years. Not a badge we bought — it's how we've always worked."*
+✅ *"Verified Fair Trade Federation member for over twenty years. Not a badge we bought — it's how we've always worked."*
 
 ❌ *"Our FTF-certified product line reflects our commitment to ethical sourcing standards."*
 
@@ -114,7 +114,7 @@ Describe what things feel like, smell like, look like on a table or draped over 
 
 **However:** When our fair trade credentials or eco-friendly practices are relevant, say so — simply. Balizen has been a Fair Trade Federation member for over twenty years. That's not jargon — that's a fact worth stating. The key is to let the sensory experience lead, and let the credentials land as quiet confidence, not a sales pitch.
 
-**Important distinction:** *We* are a Fair Trade Federation member — Balizen as a company. Individual products are not independently "certified." Say "made in our fair trade workshop" or "Fair Trade Federation member since the '90s" — not "this product is fair trade certified." (See the Correct Terms Glossary.)
+**Important distinction:** *We* are a verified Fair Trade Federation member — Balizen as a company. Individual products are not independently verified or certified. Say "made in our fair trade workshop" or "Fair Trade Federation member since the '90s" — not "this product is fair trade certified." (See the Correct Terms Glossary.)
 
 **Do:** Use sensory language — textures, scents, colors, warmth. Write short, evocative lines. When our FTF membership or eco practices are relevant, state them plainly and move on.
 
@@ -122,7 +122,7 @@ Describe what things feel like, smell like, look like on a table or draped over 
 
 **Example:**
 
-✅ *"Hand-screened cotton. Sun-dried vetiver. The smell of Bali, wherever you are."*
+✅ *"Hand silk-screened cotton. Sun-dried vetiver. The smell of Bali, wherever you are."*
 ❌ *"This product is made from 100% organic, sustainably harvested vetiver root, processed without chemicals, and certified by the Fair Trade Federation."*
 
 ✅ *"Soft cotton, rich indigo. Made to be lived in. From our fair trade workshop in Bali."*
@@ -233,7 +233,7 @@ The full audience definition lives on the Who We Speak To page. Quick version fo
 
 **Wholesale & B2B:** Still warm, but more grounded. Lead with capability, reliability, and the depth of the collection. Show that Balizen is a serious partner with a joyful heart.
 
-*"Original designs. Consistent quality. Fair Trade Federation members for over 20 years. A partner your customers will feel good about."*
+*"Original designs. Consistent quality. Verified Fair Trade Federation members for over 20 years. A partner your customers will feel good about."*
 
 **Educational Content:** Generous, curious, never preachy. Share knowledge the way you'd share it over tea — because it's interesting, not because you're trying to prove something.
 

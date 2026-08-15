@@ -15,10 +15,10 @@ The Balizen brand experience defines our customers' interaction with our company
 > The quality and attention to detail of the products far exceeds expectations.
 
 > 👱‍♀️ **Tailored / Bespoke Experience / Friendly-Homey**
-> Should feel like talking to an old friend. Understanding the customer's needs, and making them feel exceptionally cared for and attentive to their needs.
+> Should feel like talking to an old friend. Understanding the customer's needs, and making them feel exceptionally cared for, with attention to every detail.
 
 > 🎨 **A cohesive, clear and distinct design sensibility?**
-> Distinct color stories inspired by nature. All our products just work together perfectly and effortlessly. With distinct and cohesive color seasons each season. "Capsule wardrobe style" products / modular mix and match, but it always works. (in the homewares, gifts & fashion lines).
+> Distinct color stories inspired by nature. All our products just work together perfectly and effortlessly. With distinct and cohesive new color/pattern stories each season that effortlessly blend with existing product collections. "Capsule wardrobe style" products / modular mix and match, but it always works. (in the homewares, gifts & fashion lines).
 
 *(Note: the question mark on the fourth pillar is in the source — pending Andrea's decision.)*
 
@@ -37,13 +37,13 @@ There are literally dozens of touchpoints in which customers interact with Baliz
 
 - ✨ **High quality** — Our offerings should be exceptional and exceed expectations.
 - 🌿 **Natural elegance** — The products should be effortless and functional, multi-purpose, and naturally elegant. Taking you from holiday to home.
-- 🎁 **Spreading joy** — Our products should bring joy to you, your home, and your loved ones. From smile to smile.
-- 🌈 **Delights all the senses** — The textures of the clothing, the smells of the vetiver, the colors of the designs, all makes your home and your life better.
+- 🎁 **Spreading joy** — Our products should bring joy to you, your customers (if purchasing wholesale), your home, and your loved ones. From smile to smile.
+- 🌈 **Delights all the senses** — The textures of the clothing, the smells of the vetiver, the colors of the designs, all make your home and your life better.
 - 💎 **Unique** — Original and distinctive Balizen designs.
 
 ### 👥 Interactions with people at Balizen should always make customers feel we are:
 
 - **Straightforward and efficient** — Questions or problems should be handled quickly and smoothly; we never want to create more issues for our customers.
 - **Respectful and confident** — Knowledgeable, but never arrogant. We never want the customer to feel foolish or inept.
-- **Great listeners, full of empathy** — The customer should feel we understand and anticipate his or her needs before they need to ask. All customer correspondence should be read carefully to ensure we address their needs with attention to detail. Always consider what would make things as easy as possible for the customer, not convenient for the staff.
-- **Style guides** — The customer should feel we know about our products, about the best styles, and are there to help them choose what's best for their needs and home.
+- **Great listeners, full of empathy** — The customer should feel we understand and anticipate his or her needs before they even think to ask. All customer correspondence should be read carefully to ensure we address their needs with attention to detail. Always consider what would make things as easy as possible for the customer, not convenient for the staff.
+- **Style guides** — The customer should feel we know about our products, about the best styles, and are there to help them choose what's best for their personal or business needs.

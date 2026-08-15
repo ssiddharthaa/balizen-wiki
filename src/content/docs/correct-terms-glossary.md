@@ -12,13 +12,15 @@ Getting the language right matters — especially for a brand that prides itself
 
 | Use ✅ | Don't Use ❌ |
 |---|---|
+| "Verified Fair Trade Federation member" | "Verified fair trade product" |
+| "Verified fair trade business" | "Our verified products" |
 | "Fair Trade Federation member" | "Fair trade certified" (about products) |
 | "Fair Trade Federation member since the '90s" | "Our certified products" |
 | "Made in our fair trade workshop" | "This item is fair trade certified" |
 | "FTF member for over 20 years" | "Certified by the Fair Trade Federation" (about a product) |
 | "Proud member of the Fair Trade Federation" | "FTF-certified goods" |
 
-**Why this matters:** Balizen the *company* is a Fair Trade Federation member — and has been for over twenty years. Individual products are not independently certified. Saying "this product is fair trade certified" is technically inaccurate and could create legal or credibility issues. Say it about the company and the workshop, not about a specific item.
+**Why this matters:** Balizen the *company* is a verified Fair Trade Federation member — and has been for over twenty years. Verification applies to the business and how it operates, not to individual items. "Verified" and "certified" are both wrong when attached to a product, and could create legal or credibility issues. Say it about the company and the workshop, never about a specific piece.
 
 ## Dyes and printing
 
@@ -26,10 +28,11 @@ Getting the language right matters — especially for a brand that prides itself
 |---|---|
 | "Eco-friendly seaweed-based dyes" | "Natural dyes" (too vague) |
 | "Hand silk-screened" | "Printed" (too generic) |
-| "Hand silk-screened with seaweed-based dyes" | "Batik" (we don't use batik technique) |
-| "Eco-friendly dyes" (when being brief) | "Chemical-free dyes" (potentially inaccurate) |
+| "Hand silk-screened with seaweed-based dyes" | "Batik" (unless the piece genuinely uses it) |
+| "Low impact, eco-friendly dyes" | "Chemical-free dyes" (potentially inaccurate) |
+| "Eco-friendly dyes" (when being brief) | |
 
-**Why this matters:** Our dyes are specifically seaweed-based and eco-friendly — that's a distinctive fact worth being precise about. "Natural dyes" is vague and could mean anything. "Batik" refers to a specific wax-resist technique that Balizen doesn't use — our prints are hand silk-screened. Getting this right builds credibility with audiences who know the difference.
+**Why this matters:** Our dyes are specifically seaweed-based and eco-friendly — that's a distinctive fact worth being precise about. "Natural dyes" is vague and could mean anything. "Batik" refers to a specific wax-resist technique we aren't currently using — our prints are hand silk-screened. If that changes, use "batik" only for pieces genuinely made that way. Getting this right builds credibility with audiences who know the difference.
 
 ## Fabric and materials
 
