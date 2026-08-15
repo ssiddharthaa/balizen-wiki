@@ -1,7 +1,9 @@
 ---
 title: Product Design Guide
+section: Drafts
 source: whiteboard transcription (Aug 2026)
 status: draft-unapproved
+updated: 2026-08-15
 ---
 
 **The rule: Everything is made to go together.**

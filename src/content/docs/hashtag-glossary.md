@@ -1,8 +1,10 @@
 ---
 title: Hashtag Glossary & Guidance
+section: Drafts
 source: vt-guide-v4
 status: draft-unapproved
-note: Approved content, but internal/hire-facing — held out of the agency-facing MVP by scope decision (Aug 2026). Publish when the wiki grows an internal Operations section.
+updated: 2026-08-15
+note: Approved content, but internal/hire-facing — held out of the agency-facing MVP by scope decision (Aug 2026). Published to the live wiki on Sid's instruction, 15 Aug 2026.
 ---
 
 Hashtags are a discovery tool, not decoration. Use them intentionally, keep them in the first comment to keep captions clean, and rotate them based on the content type.

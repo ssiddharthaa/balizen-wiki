@@ -55,6 +55,22 @@ export default defineConfig({
 					label: 'Identity System',
 					items: [{ label: 'Identity Essentials', slug: 'identity-essentials' }],
 				},
+				{
+					// Unapproved whiteboard transcriptions, published on Sid's instruction
+					// (15 Aug 2026). Kept in their own collapsed group, and badged on the
+					// page itself, so they are never mistaken for approved brand law.
+					// Each stays `status: draft-unapproved` until Andrea approves it.
+					label: 'Drafts — not yet approved',
+					collapsed: true,
+					items: [
+						{ label: 'Photography for Website', slug: 'photography-guide' },
+						{ label: 'Product Design Guide', slug: 'product-design-guide' },
+						{ label: 'Store Design Guide', slug: 'store-design-guide' },
+						{ label: 'Email Communication Guide', slug: 'email-communication-guide' },
+						{ label: 'Hashtag Glossary & Guidance', slug: 'hashtag-glossary' },
+						{ label: 'Social Media — working whiteboard', slug: 'social-media-whiteboard' },
+					],
+				},
 			],
 		}),
 	],

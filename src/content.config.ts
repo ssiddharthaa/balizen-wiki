@@ -12,6 +12,9 @@ export const collections = {
 				source: z.string().optional(),
 				status: z.enum(['approved', 'draft-unapproved']).optional(),
 				updated: z.coerce.date().optional(),
+				// Editorial/scope commentary carried over from draft/. Kept as
+				// provenance; deliberately not rendered on the page.
+				note: z.string().optional(),
 			}),
 		}),
 	}),

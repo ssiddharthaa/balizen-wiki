@@ -1,7 +1,9 @@
 ---
 title: Social Media — working whiteboard
+section: Drafts
 source: whiteboard transcription (Aug 2026)
 status: draft-unapproved
+updated: 2026-08-15
 note: Social media guide crossed off the to-add list, but this raw material feeds future content-format pages. V&T V4 tone rules already cover social voice.
 ---
 

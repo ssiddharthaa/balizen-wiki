@@ -1,7 +1,9 @@
 ---
 title: Store Design Guide
+section: Drafts
 source: whiteboard transcription (Aug 2026)
 status: draft-unapproved
+updated: 2026-08-15
 note: Crossed off Sid's wiki to-add list — internal ops, not MVP.
 ---
 

@@ -1,7 +1,9 @@
 ---
 title: Photography for Website
+section: Drafts
 source: whiteboard transcription (Aug 2026)
 status: draft-unapproved
+updated: 2026-08-15
 note: On Sid's to-add list (with theme guide sub-item). Nearest to graduation.
 ---
 
