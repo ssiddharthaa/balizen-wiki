@@ -7,28 +7,41 @@
  * The wordmark SVG is white artwork, so it sits on a Balizen Teal tile
  * (matching the reel end frames); the two monogram marks carry their own
  * background inside the SVG and sit on the plain panel.
+ *
+ * Hovering (or focusing) a tile reveals a Download button that saves the
+ * original SVG artwork — the `?url` imports serve the untouched files.
  */
 import { Image } from 'astro:assets';
 import wordmark from '../assets/logo/logo1.svg';
 import monogramSquare from '../assets/logo/logo2.svg';
 import monogramCircle from '../assets/logo/logo3.svg';
+// no-inline: always emit real .svg files for the download links.
+import wordmarkUrl from '../assets/logo/logo1.svg?url&no-inline';
+import monogramSquareUrl from '../assets/logo/logo2.svg?url&no-inline';
+import monogramCircleUrl from '../assets/logo/logo3.svg?url&no-inline';
 
 const files = [
 	{
 		src: wordmark,
+		url: wordmarkUrl,
 		name: 'logo1.svg',
+		downloadName: 'balizen-wordmark.svg',
 		note: 'Balizen wordmark — white artwork, shown here on Balizen Teal',
 		tile: 'teal',
 	},
 	{
 		src: monogramSquare,
+		url: monogramSquareUrl,
 		name: 'logo2.svg',
+		downloadName: 'balizen-monogram-square.svg',
 		note: 'B monogram — teal square',
 		tile: 'panel',
 	},
 	{
 		src: monogramCircle,
+		url: monogramCircleUrl,
 		name: 'logo3.svg',
+		downloadName: 'balizen-monogram-circle.svg',
 		note: 'B monogram — teal circle',
 		tile: 'panel',
 	},
@@ -37,10 +50,14 @@ const files = [
 
 <div class="logo-files not-content">
 	{
-		files.map(({ src, name, note, tile }) => (
+		files.map(({ src, url, name, downloadName, note, tile }) => (
 			<figure class:list={['logo-file', `tile-${tile}`]}>
 				<div class="tile">
 					<Image src={src} alt={note} height="120" />
+					<a class="dl" href={url} download={downloadName} aria-label={`Download ${name}`}>
+						<svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M8 1v8.6L4.7 6.3l-1 1L8 11.6l4.3-4.3-1-1L8 9.6V1H8zM2 13h12v1.5H2z"/></svg>
+						Download
+					</a>
 				</div>
 				<figcaption>
 					<code>{name}</code>
@@ -67,6 +84,7 @@ const files = [
 	}
 
 	.tile {
+		position: relative;
 		border-radius: 10px;
 		padding: 1.5rem;
 		display: flex;
@@ -89,6 +107,44 @@ const files = [
 		height: auto;
 		max-height: 7rem;
 		object-fit: contain;
+	}
+
+	/* Download button: hidden until the tile is hovered or focused. */
+	.dl {
+		position: absolute;
+		right: 0.6rem;
+		bottom: 0.6rem;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		padding: 0.32rem 0.7rem;
+		border-radius: 999px;
+		background: var(--ui-page-bg);
+		border: 1px solid var(--line);
+		font-family: var(--font-sans);
+		font-size: 0.78rem;
+		font-weight: 500;
+		color: var(--teal-dark);
+		text-decoration: none;
+		opacity: 0;
+		transition: opacity 0.15s;
+		box-shadow: 0 1px 2px rgba(51, 66, 76, 0.06);
+	}
+
+	.tile:hover .dl,
+	.dl:focus-visible {
+		opacity: 1;
+	}
+
+	.dl:hover {
+		background: var(--teal-tint);
+	}
+
+	/* Touch devices have no hover — keep the button visible. */
+	@media (hover: none) {
+		.dl {
+			opacity: 1;
+		}
 	}
 
 	figcaption {

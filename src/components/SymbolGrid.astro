@@ -7,10 +7,18 @@
  * verbatim on the page — a symbol whose sheet entry carries no meaning is
  * shown as artwork only, never given an invented one.
  *
+ * Hovering (or focusing) a tile reveals two download buttons: SVG serves the
+ * untouched artwork file (`?url` glob), PNG a 512px raster generated at build
+ * time by astro:assets.
+ *
+ * The page-level "download all" zip is NOT generated here — it lives at
+ * public/downloads/balizen-symbols.zip. Regenerate after any SVG change:
+ *   cd src/assets/icons/svgs/Illustrations && zip -X ../../../../../public/downloads/balizen-symbols.zip *.svg
+ *
  * Usage:
  *   <SymbolGrid items={[{ file: 'Gingko', meanings: ['Balizen signature', 'Made with love', 'Local'] }, …]} />
  */
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 
 interface Props {
 	items: { file: string; meanings?: string[] }[];
@@ -20,25 +28,41 @@ const svgs = import.meta.glob<{ default: ImageMetadata }>(
 	'../assets/icons/svgs/Illustrations/*.svg',
 	{ eager: true }
 );
+const svgUrls = import.meta.glob<string>('../assets/icons/svgs/Illustrations/*.svg', {
+	eager: true,
+	// no-inline: always emit real .svg files — a data: URI download works, but
+	// bloats the HTML and loses the asset URL.
+	query: '?url&no-inline',
+	import: 'default',
+});
 
 const { items } = Astro.props;
-const resolved = items.map((item) => {
-	const mod = svgs[`../assets/icons/svgs/Illustrations/${item.file}.svg`];
-	if (!mod) {
-		throw new Error(
-			`SymbolGrid: "${item.file}.svg" not found in src/assets/icons/svgs/Illustrations`
-		);
-	}
-	return { ...item, src: mod.default };
-});
+const resolved = await Promise.all(
+	items.map(async (item) => {
+		const key = `../assets/icons/svgs/Illustrations/${item.file}.svg`;
+		const mod = svgs[key];
+		if (!mod) {
+			throw new Error(
+				`SymbolGrid: "${item.file}.svg" not found in src/assets/icons/svgs/Illustrations`
+			);
+		}
+		const png = await getImage({ src: mod.default, format: 'png', width: 512, height: 512 });
+		const slug = item.file.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+		return { ...item, src: mod.default, svgUrl: svgUrls[key], pngUrl: png.src, slug };
+	})
+);
 ---
 
 <div class="symbol-grid not-content">
 	{
-		resolved.map(({ file, meanings, src }) => (
+		resolved.map(({ file, meanings, src, svgUrl, pngUrl, slug }) => (
 			<figure class="symbol">
 				<div class="art">
 					<Image src={src} alt={meanings ? meanings.join(' · ') : `${file} symbol`} width="96" height="96" />
+					<span class="dls">
+						<a href={svgUrl} download={`balizen-symbol-${slug}.svg`} aria-label={`Download ${file} as SVG`}>SVG</a>
+						<a href={pngUrl} download={`balizen-symbol-${slug}.png`} aria-label={`Download ${file} as PNG`}>PNG</a>
+					</span>
 				</div>
 				{meanings && (
 					<figcaption>
@@ -69,6 +93,7 @@ const resolved = items.map((item) => {
 		flex-direction: column;
 		align-items: center;
 		gap: 0.75rem;
+		position: relative;
 	}
 
 	.art :global(img) {
@@ -76,6 +101,45 @@ const resolved = items.map((item) => {
 		width: 4.5rem;
 		height: 4.5rem;
 		object-fit: contain;
+	}
+
+	/* Per-symbol download buttons: hidden until the tile is hovered/focused. */
+	.dls {
+		position: absolute;
+		top: 0.5rem;
+		right: 0.5rem;
+		display: flex;
+		gap: 0.3rem;
+	}
+
+	.dls a {
+		padding: 0.18rem 0.5rem;
+		border: 1px solid var(--line);
+		border-radius: 999px;
+		background: var(--ui-page-bg);
+		font-family: var(--font-sans);
+		font-size: 0.68rem;
+		font-weight: 600;
+		letter-spacing: 0.04em;
+		color: var(--teal-dark);
+		text-decoration: none;
+		opacity: 0;
+		transition: opacity 0.15s;
+	}
+
+	.symbol:hover .dls a,
+	.dls a:focus-visible {
+		opacity: 1;
+	}
+
+	.dls a:hover {
+		background: var(--teal-tint);
+	}
+
+	@media (hover: none) {
+		.dls a {
+			opacity: 1;
+		}
 	}
 
 	figcaption {

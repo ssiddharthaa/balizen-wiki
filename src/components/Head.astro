@@ -145,3 +145,65 @@ const cssVars = [
 		addEventListener('keydown', (e) => e.key === 'Escape' && unpin());
 	})();
 </script>
+
+{/*
+	Lightbox: click any content image to see it enlarged (Sid, 15 Aug 2026).
+	Applies to images in the page body — the logo-file and symbol tiles are
+	excluded, since hovering those reveals download buttons instead. The
+	overlay is built once on demand; click anywhere or Esc closes. PhotoSet's
+	callout label (or the image's alt) becomes the caption.
+*/}
+<script is:inline>
+	(() => {
+		let overlay = null;
+		let lastFocus = null;
+
+		const close = () => {
+			if (!overlay) return;
+			overlay.classList.remove('open');
+			document.documentElement.classList.remove('lb-lock');
+			if (lastFocus && lastFocus.focus) lastFocus.focus();
+		};
+
+		const build = () => {
+			overlay = document.createElement('div');
+			overlay.className = 'lightbox';
+			overlay.setAttribute('role', 'dialog');
+			overlay.setAttribute('aria-modal', 'true');
+			overlay.setAttribute('aria-label', 'Enlarged image');
+			overlay.tabIndex = -1;
+			overlay.innerHTML =
+				'<figure><img alt="" /><figcaption class="lb-caption"></figcaption></figure>' +
+				'<button type="button" class="lb-close" aria-label="Close">×</button>';
+			overlay.addEventListener('click', close);
+			document.body.appendChild(overlay);
+		};
+
+		const open = (img) => {
+			if (!overlay) build();
+			const big = overlay.querySelector('img');
+			big.src = img.currentSrc || img.src;
+			big.alt = img.alt || '';
+			const label = img.closest('.photo-set')?.querySelector('.callout')?.textContent;
+			const caption = overlay.querySelector('.lb-caption');
+			caption.textContent = label || img.alt || '';
+			caption.hidden = !caption.textContent;
+			lastFocus = document.activeElement;
+			overlay.classList.add('open');
+			document.documentElement.classList.add('lb-lock');
+			overlay.focus();
+		};
+
+		document.addEventListener('click', (e) => {
+			const img = e.target.closest?.('.sl-markdown-content img');
+			if (!img) return;
+			if (img.closest('.logo-files') || img.closest('.symbol-grid')) return;
+			if (img.closest('a')) return; // linked images keep their link behaviour
+			open(img);
+		});
+
+		addEventListener('keydown', (e) => {
+			if (e.key === 'Escape' && overlay && overlay.classList.contains('open')) close();
+		});
+	})();
+</script>

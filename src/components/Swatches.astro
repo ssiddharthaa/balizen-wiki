@@ -27,7 +27,11 @@ const resolved = items.map((item) => {
 	{
 		resolved.map(({ name, hex, note }) => (
 			<div class="sw">
-				<div class="chip" style={`background:${hex}`} />
+				<div class="chip" style={`background:${hex}`}>
+					<button type="button" class="copy" data-hex={hex} aria-label={`Copy ${hex}`}>
+						Copy
+					</button>
+				</div>
 				<div class="meta">
 					<b>{name}</b>
 					<code>{hex}</code>
@@ -37,3 +41,36 @@ const resolved = items.map((item) => {
 		))
 	}
 </div>
+
+<script>
+	// Copy-hex buttons: click copies the swatch's hex, label confirms briefly.
+	const legacyCopy = (text: string) => {
+		const ta = document.createElement('textarea');
+		ta.value = text;
+		ta.style.position = 'fixed';
+		ta.style.opacity = '0';
+		document.body.appendChild(ta);
+		ta.select();
+		const ok = document.execCommand('copy');
+		ta.remove();
+		return ok;
+	};
+
+	document.addEventListener('click', async (e) => {
+		const btn = (e.target as HTMLElement).closest?.('.sw .copy') as HTMLButtonElement | null;
+		if (!btn || !btn.dataset.hex) return;
+		let ok = false;
+		try {
+			await navigator.clipboard.writeText(btn.dataset.hex);
+			ok = true;
+		} catch {
+			ok = legacyCopy(btn.dataset.hex);
+		}
+		btn.textContent = ok ? 'Copied ✓' : btn.dataset.hex;
+		btn.classList.toggle('done', ok);
+		setTimeout(() => {
+			btn.textContent = 'Copy';
+			btn.classList.remove('done');
+		}, 1400);
+	});
+</script>

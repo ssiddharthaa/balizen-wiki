@@ -37,7 +37,9 @@ Layouts: light and airy, minimal borders, generous whitespace, sentence/title ca
 1. **Provenance is mandatory.** Every page carries frontmatter:
    `source:` (e.g. `brand-book-v1 slides 7-8`, `vt-guide-v4`, `style-guide-pdf`) and
    `status: approved | draft-unapproved`. Pages in `draft/` are never published.
-   A `draft-unapproved` page that must render shows a visible "Draft — not yet approved" badge.
+   Approval state is frontmatter-only — no visible badge or nav grouping; Sid removed
+   completeness as a visible layer (15 Aug 2026). `status:` remains the provenance
+   record and still gates what may be cited as approved brand law.
 2. **Verbatim seeding.** When adding content from a source document, transcribe it verbatim.
    Do not condense, regroup, embellish, or "improve" without an explicit instruction.
    If a source contains an open question (e.g. a heading ending in "?"), preserve it.
