@@ -16,7 +16,11 @@ export default defineConfig({
 	// site: 'https://brand.balizenhome.com',
 
 	// The wiki has no landing page of its own — the first approved page is the front door.
-	redirects: { '/': '/the-balizen-brand/' },
+	redirects: {
+		'/': '/the-balizen-brand/',
+		// Identity Essentials split into the Identity System section (Aug 2026).
+		'/identity-essentials/': '/identity-system/',
+	},
 	markdown: {
 		processor: unified({
 			remarkPlugins: [[remarkGlossary, { terms: glossary.terms }], remarkDoDont],
@@ -34,6 +38,12 @@ export default defineConfig({
 				ThemeProvider: './src/components/ThemeProvider.astro',
 				ThemeSelect: './src/components/ThemeSelect.astro',
 			},
+			// One axis, two halves (Sid's IA decision, 15 Aug 2026): everything up to and
+			// including the Identity System DESCRIBES the brand (definitive); everything
+			// after it APPLIES the brand (practical). Approval state never appears in the
+			// nav — it lives in frontmatter and on the page as the draft badge. custom.css
+			// draws the definitive/practical hinge as a divider before "Design Guides";
+			// that rule is positional, so keep the group order here in sync with it.
 			sidebar: [
 				{
 					label: 'The Brand',
@@ -52,13 +62,31 @@ export default defineConfig({
 					],
 				},
 				{
+					// The last definitive section — the hinge. Split from the old
+					// Identity Essentials page (Aug 2026); its URL redirects here.
 					label: 'Identity System',
-					items: [{ label: 'Identity Essentials', slug: 'identity-essentials' }],
+					items: [
+						{ label: 'Identity System', slug: 'identity-system' },
+						{ label: 'Logo', slug: 'logo' },
+						{ label: 'Color', slug: 'color' },
+						{ label: 'Typography', slug: 'typography' },
+						{ label: 'Symbols', slug: 'symbols' },
+					],
 				},
 				{
-					// The social section, per Sid's handoff (15 Aug 2026). Every page here
-					// is still `status: draft-unapproved` and carries the badge — the group
-					// gives the section its shape, the badge carries the approval state.
+					// From here down, pages apply the brand. Ex-"Drafts" pages live here
+					// by subject now; each keeps `status: draft-unapproved` and its badge
+					// until Andrea approves it.
+					label: 'Design Guides',
+					items: [
+						{ label: 'Product Design Guide', slug: 'product-design-guide' },
+						{ label: 'Store Design Guide', slug: 'store-design-guide' },
+						{ label: 'Website Guide', slug: 'website-guide' },
+						{ label: 'Photography for Website', slug: 'photography-guide' },
+						{ label: 'Email Communication Guide', slug: 'email-communication-guide' },
+					],
+				},
+				{
 					label: 'Social Media',
 					items: [
 						{ label: 'Social Media', slug: 'social-media' },
@@ -69,22 +97,8 @@ export default defineConfig({
 					],
 				},
 				{
-					// Unapproved whiteboard transcriptions, published on Sid's instruction
-					// (15 Aug 2026). Kept in their own group, and badged on the page
-					// itself, so they are never mistaken for approved brand law.
-					// Each stays `status: draft-unapproved` until Andrea approves it.
-					//
-					// Deliberately NOT `collapsed: true`: custom.css follows the prototype's
-					// flat, always-open nav (summary is pointer-events:none and the caret is
-					// hidden), so a collapsed group can never be reopened — the pages would
-					// be unreachable from every other page.
-					label: 'Drafts — not yet approved',
-					items: [
-						{ label: 'Photography for Website', slug: 'photography-guide' },
-						{ label: 'Product Design Guide', slug: 'product-design-guide' },
-						{ label: 'Store Design Guide', slug: 'store-design-guide' },
-						{ label: 'Email Communication Guide', slug: 'email-communication-guide' },
-					],
+					label: 'Reference',
+					items: [{ label: 'Glossary', slug: 'glossary' }],
 				},
 			],
 		}),

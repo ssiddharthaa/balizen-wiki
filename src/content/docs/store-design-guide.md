@@ -1,6 +1,6 @@
 ---
 title: Store Design Guide
-section: Drafts
+section: Design Guides
 source: whiteboard transcription (Aug 2026)
 status: draft-unapproved
 updated: 2026-08-15

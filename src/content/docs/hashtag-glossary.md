@@ -1,6 +1,6 @@
 ---
 title: Hashtag Glossary & Guidance
-section: Drafts
+section: Social Media
 source: vt-guide-v4
 status: draft-unapproved
 updated: 2026-08-15

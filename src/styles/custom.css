@@ -81,6 +81,15 @@ body {
 	font-weight: 600;
 }
 
+/* The definitive/practical hinge (Sid's IA, Aug 2026): groups 1–3 describe the
+   brand, groups 4+ apply it. A quiet rule before "Design Guides" marks the turn.
+   POSITIONAL — if the sidebar group order in astro.config.mjs changes, move this. */
+.sidebar-content ul.top-level > li:nth-child(4) {
+	margin-top: 1.1rem;
+	padding-top: 1.1rem;
+	border-top: 1px solid var(--line);
+}
+
 /* ---------- Content typography, per prototype ---------- */
 .sl-markdown-content {
 	font-size: 1.03125rem; /* 16.5px */
