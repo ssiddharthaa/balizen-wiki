@@ -1,0 +1,72 @@
+---
+/**
+ * A whiteboard sticky note.
+ *
+ * The source whiteboard uses Miro's default green / cyan / yellow stickies.
+ * Those are not Balizen colors, and the extended brand palette (Glow, Blush,
+ * Spice) is swatch-only per CLAUDE.md — so the notes are rebuilt from the two
+ * approved UI surfaces, --panel and --teal-tint. The sticky *shape* carries the
+ * whiteboard feeling instead of the color: square-ish corners, a soft lift, and
+ * a hairline fold at the top edge.
+ */
+interface Props {
+	/** Note heading, verbatim from the whiteboard. */
+	title: string;
+	/** Which UI surface to fill with. */
+	tone?: 'tint' | 'panel';
+}
+
+const { title, tone = 'panel' } = Astro.props;
+---
+
+<div class:list={['sticky', `tone-${tone}`]}>
+	<p class="sticky-title">{title}</p>
+	<div class="sticky-body">
+		<slot />
+	</div>
+</div>
+
+<style>
+	.sticky {
+		padding: 1.1rem 1.25rem 1.25rem;
+		border-radius: 3px;
+		box-shadow: 0 1px 3px rgba(51, 66, 76, 0.09);
+	}
+
+	.tone-panel {
+		background: var(--panel);
+	}
+	.tone-tint {
+		background: var(--teal-tint);
+	}
+
+	.sticky-title {
+		margin: 0 0 0.6rem;
+		font-family: var(--font-sans);
+		font-size: 1rem;
+		font-weight: 600;
+		line-height: 1.35;
+		color: var(--teal-dark);
+	}
+
+	.sticky-body {
+		font-size: 0.9rem;
+		line-height: 1.6;
+		color: var(--ink);
+	}
+
+	/* Tighten the transcribed bullet lists inside a note. */
+	.sticky-body :global(ul) {
+		margin: 0;
+		padding-inline-start: 1.1rem;
+	}
+	.sticky-body :global(li + li) {
+		margin-top: 0.3rem;
+	}
+	.sticky-body :global(p) {
+		margin: 0 0 0.5rem;
+	}
+	.sticky-body :global(p:last-child) {
+		margin-bottom: 0;
+	}
+</style>

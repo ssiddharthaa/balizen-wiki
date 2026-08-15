@@ -1,0 +1,68 @@
+---
+/**
+ * A row of example photographs with the whiteboard's callout label beneath.
+ *
+ * Mirrors the source whiteboard, where each cluster of reference images carries
+ * a grey-bordered note describing the format. Label text is transcribed
+ * verbatim — this component styles it, it never rewrites it.
+ *
+ * Images are passed in as a slot so pages keep control of `astro:assets`
+ * imports (and therefore of alt text).
+ */
+interface Props {
+	/** Callout text, verbatim from the whiteboard. */
+	label: string;
+	/** Single hero image rather than a multi-image row. */
+	single?: boolean;
+}
+
+const { label, single = false } = Astro.props;
+---
+
+<figure class:list={['photo-set', { 'is-single': single }]}>
+	<div class="frames">
+		<slot />
+	</div>
+	<figcaption class="callout">{label}</figcaption>
+</figure>
+
+<style>
+	.photo-set {
+		margin: 1.75rem 0 2.5rem;
+	}
+
+	.frames {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
+		gap: 0.75rem;
+		align-items: start;
+	}
+
+	/* A single hero photo shouldn't stretch the full content width. */
+	.is-single .frames {
+		grid-template-columns: minmax(0, 22rem);
+	}
+
+	.frames :global(img) {
+		display: block;
+		width: 100%;
+		height: auto;
+		border-radius: 10px;
+		/* Whisper-level only, per the approved prototype. */
+		box-shadow: 0 1px 2px rgba(51, 66, 76, 0.06);
+	}
+
+	/* The whiteboard's note: white card, hairline border, quiet grey text. */
+	.callout {
+		display: inline-block;
+		margin-top: 0.9rem;
+		padding: 0.6rem 0.95rem;
+		background: var(--ui-page-bg);
+		border: 1px solid var(--line);
+		border-radius: 8px;
+		font-family: var(--font-sans);
+		font-size: 0.86rem;
+		line-height: 1.5;
+		color: var(--grey);
+	}
+</style>

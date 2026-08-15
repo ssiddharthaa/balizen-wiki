@@ -1,0 +1,20 @@
+---
+/**
+ * Lays sticky notes out side by side, the way they sit in the whiteboard's
+ * bottom-right corner. Collapses to a single column on narrow screens.
+ */
+---
+
+<div class="sticky-wall">
+	<slot />
+</div>
+
+<style>
+	.sticky-wall {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+		gap: 1rem;
+		margin: 1.5rem 0 2rem;
+		align-items: start;
+	}
+</style>
