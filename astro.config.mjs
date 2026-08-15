@@ -57,11 +57,15 @@ export default defineConfig({
 				},
 				{
 					// Unapproved whiteboard transcriptions, published on Sid's instruction
-					// (15 Aug 2026). Kept in their own collapsed group, and badged on the
-					// page itself, so they are never mistaken for approved brand law.
+					// (15 Aug 2026). Kept in their own group, and badged on the page
+					// itself, so they are never mistaken for approved brand law.
 					// Each stays `status: draft-unapproved` until Andrea approves it.
+					//
+					// Deliberately NOT `collapsed: true`: custom.css follows the prototype's
+					// flat, always-open nav (summary is pointer-events:none and the caret is
+					// hidden), so a collapsed group can never be reopened — the pages would
+					// be unreachable from every other page.
 					label: 'Drafts — not yet approved',
-					collapsed: true,
 					items: [
 						{ label: 'Photography for Website', slug: 'photography-guide' },
 						{ label: 'Product Design Guide', slug: 'product-design-guide' },
