@@ -1,0 +1,71 @@
+---
+title: "Social Media: Grid & Sequencing"
+section: Social Media
+source: whiteboard transcription (Aug 2026); Balizen Instagram rows and reference grids supplied by Sid (Aug 2026)
+status: draft-unapproved
+updated: 2026-08-15
+---
+
+import { Image } from 'astro:assets';
+import PhotoSet from '../../components/PhotoSet.astro';
+
+import thematicRows1 from '../../assets/social-media/thematic-rows1.png';
+import thematicRows2 from '../../assets/social-media/thematic-rows2.png';
+import thematicRows3 from '../../assets/social-media/thematic-rows3.png';
+
+import inspo1 from '../../assets/social-media/inspo1.png';
+import inspo2 from '../../assets/social-media/inspo2.png';
+import inspo3 from '../../assets/social-media/inspo3.png';
+import inspo4 from '../../assets/social-media/inspo4.png';
+import inspo5 from '../../assets/social-media/inspo5.png';
+import inspo6 from '../../assets/social-media/inspo6.png';
+import inspo7 from '../../assets/social-media/inspo7.png';
+import inspo8 from '../../assets/social-media/inspo8.png';
+
+A post is seen once. The grid is seen every time someone visits. It is the one
+place on social where we get to compose rather than publish — where a single
+image becomes part of a larger arrangement, and the arrangement itself says
+something.
+
+## Thematic rows and sets
+
+Combine an arrangement of:
+
+- Nature, architecture, craft, art
+- Bali romanticism
+- Product — stylized, or just the product
+
+## Intuitive arrangement
+
+Tell a story with a block of 3, 6, or 9. For example, a product theme — bags,
+crochet, a new colorway, a new motif.
+
+<PhotoSet layout="stack" label="Nature, architecture, craft">
+	<Image src={thematicRows1} alt="Row of four red-themed Balizen photographs: block-printed table runner with wooden servers and a carved bowl of oranges, a magenta bowl on a red runner, a macro of a red starfish, and carved wooden bowls of mangosteen on a red print cloth." />
+	<Image src={thematicRows2} alt="Two photographs: a flowering aloe against blue sky, and two glasses of turmeric drink beside fresh turmeric root." />
+</PhotoSet>
+
+<PhotoSet layout="stack" label="A sense of romanticism about Bali">
+	<Image src={thematicRows3} alt="Two photographs: a pandanus-lined path opening onto sunlit sea, and three cast brass palm and pineapple wall hooks on white boards." />
+</PhotoSet>
+
+## Reference examples
+
+From other brands' feeds — reference only, not Balizen work.
+
+<PhotoSet layout="pair" label="Rows of three">
+	<Image src={inspo1} alt="Row of three: a pink gemstone choker, a macro of a ruffled apricot carnation, and a pale blue shirt worn with red printed trousers." />
+	<Image src={inspo4} alt="Row of three: 'Love me Paris' painted on a wall, a woman stepping over a puddle in a striped skirt, and a gilded statue silhouetted against the Eiffel Tower at sunset." />
+	<Image src={inspo5} alt="Row of three in muted neutrals: a straw basket of baguettes on a green café chair, a taupe coat over a white shirt, and brown textured leather slides." />
+	<Image src={inspo6} alt="Row of three from an outdoor gear brand, each carrying overlaid caption text: an olive backpack on grass, two hikers laughing against red rock, and a yellow canvas tote held up to camera." />
+</PhotoSet>
+
+<PhotoSet layout="pair" label="Blocks of six and nine">
+	<Image src={inspo2} alt="Six-image grid from a children's furniture brand: a cot seen from above, a baby in a carrier, a toddler in a pushchair, two children in high chairs, children asleep on a plane, and a family in a doorway." />
+	<Image src={inspo3} alt="Nine-image grid themed on bags in yellow and blue, mixing street photography, still life and painted illustration." />
+	<Image src={inspo7} alt="Nine-image grid themed on Paris in pink and coral, mixing embroidered clothing, street signs, jewellery, striped chairs and a straw basket." />
+</PhotoSet>
+
+<PhotoSet layout="single" label="A single pinned post">
+	<Image src={inspo8} alt="A person standing in front of the yellow nose of a Rio Grande locomotive against a turquoise sky." />
+</PhotoSet>

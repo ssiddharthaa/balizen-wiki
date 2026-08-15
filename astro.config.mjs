@@ -56,6 +56,19 @@ export default defineConfig({
 					items: [{ label: 'Identity Essentials', slug: 'identity-essentials' }],
 				},
 				{
+					// The social section, per Sid's handoff (15 Aug 2026). Every page here
+					// is still `status: draft-unapproved` and carries the badge — the group
+					// gives the section its shape, the badge carries the approval state.
+					label: 'Social Media',
+					items: [
+						{ label: 'Social Media', slug: 'social-media' },
+						{ label: 'Formats', slug: 'social-media-formats' },
+						{ label: 'Grid & Sequencing', slug: 'social-media-grid' },
+						{ label: 'Storytelling', slug: 'social-media-storytelling' },
+						{ label: 'Hashtag Glossary & Guidance', slug: 'hashtag-glossary' },
+					],
+				},
+				{
 					// Unapproved whiteboard transcriptions, published on Sid's instruction
 					// (15 Aug 2026). Kept in their own group, and badged on the page
 					// itself, so they are never mistaken for approved brand law.
@@ -71,8 +84,6 @@ export default defineConfig({
 						{ label: 'Product Design Guide', slug: 'product-design-guide' },
 						{ label: 'Store Design Guide', slug: 'store-design-guide' },
 						{ label: 'Email Communication Guide', slug: 'email-communication-guide' },
-						{ label: 'Hashtag Glossary & Guidance', slug: 'hashtag-glossary' },
-						{ label: 'Social Media — working whiteboard', slug: 'social-media-whiteboard' },
 					],
 				},
 			],
