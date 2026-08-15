@@ -32,6 +32,8 @@ The single idea we want to own in our customers' minds:
 
 **Balizen = Doing something positive for people & the planet**
 
+*"From smile to smile" is how the promise sounds — see [Voice & Tone](/voice-and-tone/).*
+
 ## 🏷️ Brand Attributes
 
 The characteristics we want associated with Balizen. We have gathered input from customers and we know that these are all characteristics that they believe are important and that could strongly affect their purchasing decisions.

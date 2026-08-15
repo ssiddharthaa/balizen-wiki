@@ -33,7 +33,7 @@ For people just discovering Balizen, this is often the hook. It answers the firs
 - **New audiences** (first touch, About pages, wholesale intros, tourist encounters) — state it early and plainly. It's the fastest trust-builder we have.
 - **Warm audiences** (email, repeat customers, social regulars) — quiet confidence. A line near the end, not the headline.
 - **Always pair the credential with the human story.** The membership proves the relationship; the artisans *are* the relationship.
-- **Language rules live in the Correct Terms Glossary** — *we* are verified members; products are never "verified" or "certified."
+- **Language rules live in the [Correct Terms Glossary](/correct-terms-glossary/)** — *we* are verified members; products are never "verified" or "certified."
 
 **Example:**
 
@@ -114,7 +114,7 @@ Describe what things feel like, smell like, look like on a table or draped over 
 
 **However:** When our fair trade credentials or eco-friendly practices are relevant, say so — simply. Balizen has been a Fair Trade Federation member for over twenty years. That's not jargon — that's a fact worth stating. The key is to let the sensory experience lead, and let the credentials land as quiet confidence, not a sales pitch.
 
-**Important distinction:** *We* are a verified Fair Trade Federation member — Balizen as a company. Individual products are not independently verified or certified. Say "made in our fair trade workshop" or "Fair Trade Federation member since the '90s" — not "this product is fair trade certified." (See the Correct Terms Glossary.)
+**Important distinction:** *We* are a verified Fair Trade Federation member — Balizen as a company. Individual products are not independently verified or certified. Say "made in our fair trade workshop" or "Fair Trade Federation member since the '90s" — not "this product is fair trade certified." (See the [Correct Terms Glossary](/correct-terms-glossary/).)
 
 **Do:** Use sensory language — textures, scents, colors, warmth. Write short, evocative lines. When our FTF membership or eco practices are relevant, state them plainly and move on.
 
@@ -205,7 +205,7 @@ The customer is part of this long story too. Every purchase is a relationship, n
 
 ## Who We Speak To — Audience Quick Reference
 
-The full audience definition lives on the Who We Speak To page. Quick version for writers:
+The full audience definition lives on the [Who We Speak To](/who-we-speak-to/) page. Quick version for writers:
 
 | Audience | Who | Lens emphasis | Where we reach them |
 |---|---|---|---|

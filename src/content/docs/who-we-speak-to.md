@@ -21,18 +21,18 @@ Every Balizen customer, in some measure, sees us through these lenses. Dial each
 Women 30–55, mid-to-high income, home-and-family oriented. They shop homewares, gifts, and slow fashion with intention. Concentrated in Australia, Europe, Singapore, and the US. They value quality, natural elegance, and knowing who made what they own. Many first meet Balizen as travelers — the trusted stop for authentic, Bali-made souvenirs and gifts worth carrying home.
 
 - **Lens emphasis:** Values first, Tourist journey second.
-- **Where we reach them:** Bali stores, website, email, magazine features, tourism events.
+- **Where we reach them:** Bali [stores](/store-design-guide/), [website](/website-guide/), [email](/email-communication-guide/), magazine features, tourism events.
 
 ## 📱 Secondary Audience — The Conscious Next Generation
 
 Younger shoppers, 25–35. Instagram-native, capsule-wardrobe minded, drawn to our extraordinary color combinations and mix-and-match design sensibility. They buy fewer, better things — and they share what they love. For them, Balizen is the Bali find worth posting: genuinely local, eco-made, and beautiful enough to prove it.
 
 - **Lens emphasis:** Education and Values, told visually.
-- **Where we reach them:** Social media, short-form video, creator collaborations.
+- **Where we reach them:** [Social media](/social-media/), short-form video, creator collaborations.
 
 ## 🏨 Future Audience — The Trade & The Taste-Makers
 
 Interior designers, stylists, boutique hotels, and conscious retailers who specify and buy Balizen for their clients and guests. One relationship, many homes — and a natural partner for Bali's hospitality and tourism world.
 
 - **Lens emphasis:** Values as differentiator, Education as sales story.
-- **Where we reach them:** Wholesale catalog, trade fairs, tourism conferences, direct outreach.
+- **Where we reach them:** Wholesale catalog and [wholesale email blasts](/email-communication-guide/#wholesale-email-blasts), trade fairs, tourism conferences, direct outreach.

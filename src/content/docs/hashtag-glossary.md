@@ -7,7 +7,7 @@ updated: 2026-08-15
 note: Approved content, but internal/hire-facing — held out of the agency-facing MVP by scope decision (Aug 2026). Published to the live wiki on Sid's instruction, 15 Aug 2026.
 ---
 
-Hashtags are a discovery tool, not decoration. Use them intentionally, keep them in the first comment to keep captions clean, and rotate them based on the content type.
+Hashtags are a discovery tool, not decoration. Use them intentionally, keep them in the first comment to keep captions clean, and rotate them based on the content type. They are the fourth element of every post — see [Social Media](/social-media/).
 
 **Placement strategy:** Top 5 most relevant hashtags go in the **caption** (Instagram currently limits caption hashtags to 5). The remaining 15–17 go in the **first comment**, posted immediately after publishing — Buffer automates this.
 

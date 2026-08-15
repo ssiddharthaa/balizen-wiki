@@ -8,6 +8,8 @@ updated: 2026-08-13
 
 Getting the language right matters — especially for a brand that prides itself on being genuinely what it claims. Use this glossary to avoid common mistakes in copy.
 
+This page sets the phrasing rules. For what each term means, see the [Glossary](/glossary/); for the voice the words carry, see [Voice & Tone](/voice-and-tone/).
+
 ## Fair Trade Federation membership
 
 | Use ✅ | Don't Use ❌ |

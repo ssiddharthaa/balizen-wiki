@@ -8,6 +8,8 @@ updated: 2026-08-15
 
 **The rule: Everything is made to go together.**
 
+The colors and patterns here are what the [Color](/color/) palette becomes in a season's line; the finished pieces are then shot to the [Photography for Website](/photography-guide/) specs.
+
 ## Colors
 - Look up Pantone colors for the season
 - Basic categories: warm & cool

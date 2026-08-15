@@ -7,6 +7,8 @@ updated: 2026-08-15
 note: On Sid's to-add list (with theme guide sub-item). Nearest to graduation.
 ---
 
+These are the file specs for product shots on the [Website](/website-guide/). For the look and feel — light, fresh, natural elegance — see [Social Media: Formats](/social-media-formats/).
+
 ## Product Photography — minimums per product
 - 1 picture in setting (closeup & bigger setting)
 - 1 on white background

@@ -26,6 +26,8 @@ The Balizen brand experience defines our customers' interaction with our company
 
 There are literally dozens of touchpoints in which customers interact with Balizen — from seeing one of our ads on Instagram to walking in to one of our stores in Bali, to browsing & shopping on the website. We have grouped these touchpoints into three sets — communications, products and services, and people — and for each set we have provided detailed standards that define what our brand experience should be.
 
+The standards below say what the experience should feel like; the guides say how to build it — [Social Media](/social-media/), [Website](/website-guide/), [Email](/email-communication-guide/), [Store Design](/store-design-guide/) and [Product Design](/product-design-guide/).
+
 ### 📣 Balizen communications should always be:
 
 - Clear, engaging, and straightforward — Use language and visuals appropriate to the target audience.

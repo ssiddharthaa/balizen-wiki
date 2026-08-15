@@ -28,3 +28,5 @@ Great companies are built on strong brands that influence customer choice and bu
 ## Balizen Brand Story
 
 **Balizen = Doing something positive for people & the planet**
+
+Continue with [Brand Story](/brand-story/) — vision, stance, promise, and attributes.
