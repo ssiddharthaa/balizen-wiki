@@ -20,9 +20,7 @@ export default defineConfig({
 	// brand's own files, checked into src/assets.
 	image: { dangerouslyProcessSVG: true },
 
-	// The wiki has no landing page of its own — the first approved page is the front door.
 	redirects: {
-		'/': '/the-balizen-brand/',
 		// Identity Essentials split into the Identity System section (Aug 2026).
 		'/identity-essentials/': '/identity-system/',
 	},

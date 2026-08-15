@@ -1,0 +1,123 @@
+---
+/**
+ * Home page quick-link cards. Each card pairs a core wiki destination with a
+ * mark from the symbol family — used here as compositional elements, per the
+ * icons whiteboard's usage rule. The Gingko (Balizen signature) fronts the
+ * brand card; the other icons are drawn from the sheet's unlabelled symbols
+ * so no card implies a meaning the style guide doesn't assign.
+ */
+import { Image } from 'astro:assets';
+import gingko from '../assets/icons/svgs/Illustrations/Gingko.svg';
+import flower from '../assets/icons/svgs/Illustrations/Flower.svg';
+import flower2 from '../assets/icons/svgs/Illustrations/Flower2.svg';
+import square from '../assets/icons/svgs/Illustrations/Square.svg';
+import fan from '../assets/icons/svgs/Illustrations/Fan.svg';
+import leaf from '../assets/icons/svgs/Illustrations/Leaf.svg';
+
+const cards = [
+	{
+		icon: gingko,
+		title: 'The Balizen Brand',
+		blurb: 'What the brand is — goals, promise, story.',
+		href: '/the-balizen-brand/',
+	},
+	{
+		icon: flower,
+		title: 'Voice & Tone',
+		blurb: 'How we write — seven pillars, words we love and avoid.',
+		href: '/voice-and-tone/',
+	},
+	{
+		icon: flower2,
+		title: 'Who We Speak To',
+		blurb: 'The Three Lenses and the three audiences.',
+		href: '/who-we-speak-to/',
+	},
+	{
+		icon: square,
+		title: 'Identity System',
+		blurb: 'Logo, color, typography, symbols — with the artwork files.',
+		href: '/identity-system/',
+	},
+	{
+		icon: fan,
+		title: 'Social Media',
+		blurb: 'Formats, grid, storytelling, hashtags.',
+		href: '/social-media/',
+	},
+	{
+		icon: leaf,
+		title: 'Glossary',
+		blurb: 'Every Balizen term in one place.',
+		href: '/glossary/',
+	},
+];
+---
+
+<div class="home-cards not-content">
+	{
+		cards.map(({ icon, title, blurb, href }) => (
+			<a class="card" href={href}>
+				<Image src={icon} alt="" width="44" height="44" />
+				<b>{title}</b>
+				<span>{blurb}</span>
+			</a>
+		))
+	}
+</div>
+
+<style>
+	.home-cards {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+		gap: 0.85rem;
+		margin: 2.25rem 0;
+	}
+
+	.card {
+		display: flex;
+		flex-direction: column;
+		gap: 0.55rem;
+		padding: 1.4rem 1.3rem 1.25rem;
+		background: var(--panel);
+		border-radius: 12px;
+		text-decoration: none;
+		transition: background 0.15s, transform 0.15s;
+	}
+
+	.card:hover {
+		background: var(--teal-tint);
+		transform: translateY(-2px);
+	}
+
+	.card :global(img) {
+		width: 2.4rem;
+		height: 2.4rem;
+		object-fit: contain;
+		margin-bottom: 0.2rem;
+	}
+
+	.card b {
+		font-family: var(--font-serif);
+		font-weight: 400;
+		font-size: 1.18rem;
+		line-height: 1.25;
+		color: var(--teal-dark);
+	}
+
+	.card span {
+		font-family: var(--font-sans);
+		font-size: 0.86rem;
+		line-height: 1.5;
+		color: var(--grey);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.card {
+			transition: none;
+		}
+		.card:hover {
+			transform: none;
+		}
+	}
+</style>

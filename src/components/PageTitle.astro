@@ -10,11 +10,14 @@
 // Same id Starlight's own PageTitle uses (not an exported subpath, so inlined).
 const PAGE_TITLE_ID = '_top';
 
-const { data } = Astro.locals.starlightRoute.entry;
+const { data, id } = Astro.locals.starlightRoute.entry;
+// The home page composes its own hero + title in index.mdx — rendering the
+// frontmatter title here too would double it. Keep the anchor for skip-links.
+const isHome = id === '' || id === 'index';
 ---
 
-{data.section && <p class="eyebrow">{data.section}</p>}
-<h1 id={PAGE_TITLE_ID}>{data.title}</h1>
+{!isHome && data.section && <p class="eyebrow">{data.section}</p>}
+{!isHome ? <h1 id={PAGE_TITLE_ID}>{data.title}</h1> : <span id={PAGE_TITLE_ID} />}
 
 <style>
 	.eyebrow {
