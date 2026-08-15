@@ -207,3 +207,65 @@ const cssVars = [
 		});
 	})();
 </script>
+
+{/*
+	Heading anchors: Starlight's per-heading link exists to hand you a URL for
+	that section, but clicking it only appears to jump to where you already are
+	— the useful part (a shareable deep link) is invisible. So clicking also
+	copies the absolute URL and says so. The link still works normally: the
+	hash lands in the address bar either way, and ⌘/ctrl/middle-click, or a
+	failed copy, fall through to plain navigation.
+*/}
+<script is:inline>
+	(() => {
+		const legacyCopy = (text) => {
+			const ta = document.createElement('textarea');
+			ta.value = text;
+			ta.style.position = 'fixed';
+			ta.style.opacity = '0';
+			document.body.appendChild(ta);
+			ta.select();
+			let ok = false;
+			try {
+				ok = document.execCommand('copy');
+			} catch {}
+			ta.remove();
+			return ok;
+		};
+
+		let toast = null;
+		const flash = (anchor) => {
+			if (!toast) {
+				toast = document.createElement('span');
+				toast.className = 'anchor-toast';
+				document.body.appendChild(toast);
+			}
+			const r = anchor.getBoundingClientRect();
+			toast.textContent = 'Link copied';
+			toast.style.left = r.left + r.width / 2 + 'px';
+			toast.style.top = r.top - 8 + 'px';
+			toast.classList.add('show');
+			clearTimeout(toast._t);
+			toast._t = setTimeout(() => toast.classList.remove('show'), 1400);
+		};
+
+		document.addEventListener('click', async (e) => {
+			if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+			const a = e.target.closest?.('.sl-anchor-link');
+			if (!a) return;
+			const url = new URL(a.getAttribute('href'), location.href).href;
+			let ok = false;
+			try {
+				await navigator.clipboard.writeText(url);
+				ok = true;
+			} catch {
+				ok = legacyCopy(url);
+			}
+			if (ok) {
+				e.preventDefault();
+				history.replaceState(null, '', a.getAttribute('href')); // keep the hash in the bar
+				flash(a);
+			}
+		});
+	})();
+</script>

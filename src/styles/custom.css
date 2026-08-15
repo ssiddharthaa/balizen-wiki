@@ -258,6 +258,61 @@ body {
 	font-size: 0.8rem;
 }
 
+/* ---------- Home page (index.mdx, splash template) ---------- */
+.home-hero {
+	margin: 0.5rem 0 2rem;
+}
+.home-hero img {
+	display: block;
+	width: 100%;
+	height: clamp(16rem, 42vw, 26rem);
+	object-fit: cover;
+	/* Keep the model's face and the horizon in frame, cropping sand not sky. */
+	object-position: 50% 10%;
+	border-radius: 12px;
+}
+.home-eyebrow {
+	font-size: 0.69rem;
+	letter-spacing: 0.26em;
+	text-transform: uppercase;
+	color: var(--teal);
+	margin: 0 0 0.4rem;
+}
+.home h1 {
+	margin: 0;
+	font-family: var(--font-serif);
+	font-weight: 400;
+	font-size: clamp(2.1rem, 6vw, 3rem);
+	line-height: 1.12;
+	color: var(--teal-dark);
+}
+.home-tagline {
+	margin: 0.7rem 0 0;
+	font-family: var(--font-sans);
+	font-size: 1.02rem;
+	color: var(--grey);
+}
+
+/* Heading-anchor "Link copied" toast (script in Head.astro). */
+.anchor-toast {
+	position: fixed;
+	z-index: 70;
+	transform: translate(-50%, -100%);
+	padding: 0.28rem 0.6rem;
+	border-radius: 999px;
+	background: var(--teal-dark);
+	color: #fff;
+	font-family: var(--font-sans);
+	font-size: 0.72rem;
+	white-space: nowrap;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.15s;
+}
+.anchor-toast.show {
+	opacity: 1;
+}
+
 /* ---------- Lightbox (script in Head.astro) ---------- */
 /* Hover affordance: content images invite a click; excluded tiles opt out. */
 .sl-markdown-content img {
