@@ -1,9 +1,10 @@
 ---
 title: Brand Experience
 section: The Brand
-source: brand-book-v1 slides 9-11 (slide 9 marked 🟠 in-progress in source)
+source: brand-book-v1 slides 9-11
 status: approved
-updated: 2026-08-13
+updated: 2026-08-16
+note: Slide 9's four pillars were regrammared on Sid's instruction (16 Aug 2026) so each completes "we want their experience to be:" — the fourth pillar's source question mark is resolved to an affirmed pillar. Wording otherwise unchanged; all body text verbatim. Andrea to confirm, since the source slide was marked in-progress.
 ---
 
 The Balizen brand experience defines our customers' interaction with our company, its products, people, and communications. When customers interact with Balizen we want their experience to be:
@@ -11,16 +12,14 @@ The Balizen brand experience defines our customers' interaction with our company
 > 🍎 **Educational about the crafts & culture**
 > Nurturing appreciation, not taking it for granted, learning the context and the story behind the rich traditions and techniques. An appreciation for excellence in craft. A connection of craft between different cultures and time periods. The history of technique, fashion, style, etc. Encouraging self exploration & learning about the topics.
 
-> ✨ **Exceptional Value**
+> ✨ **Exceptional value**
 > The quality and attention to detail of the products far exceeds expectations.
 
-> 👱‍♀️ **Tailored / Bespoke Experience / Friendly-Homey**
+> 👱‍♀️ **Tailored, bespoke, friendly and homey**
 > Should feel like talking to an old friend. Understanding the customer's needs, and making them feel exceptionally cared for, with attention to every detail.
 
-> 🎨 **A cohesive, clear and distinct design sensibility?**
+> 🎨 **Cohesive, clear and distinct in design sensibility**
 > Distinct color stories inspired by nature. All our products just work together perfectly and effortlessly. With distinct and cohesive new color/pattern stories each season that effortlessly blend with existing product collections. "Capsule wardrobe style" products / modular mix and match, but it always works. (in the homewares, gifts & fashion lines).
-
-*(Note: the question mark on the fourth pillar is in the source — pending Andrea's decision.)*
 
 ## Standards for each Set of Touchpoints
 

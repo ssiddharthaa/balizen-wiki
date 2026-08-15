@@ -42,7 +42,9 @@ Layouts: light and airy, minimal borders, generous whitespace, sentence/title ca
    record and still gates what may be cited as approved brand law.
 2. **Verbatim seeding.** When adding content from a source document, transcribe it verbatim.
    Do not condense, regroup, embellish, or "improve" without an explicit instruction.
-   If a source contains an open question (e.g. a heading ending in "?"), preserve it.
+   If a source contains an open question (e.g. a heading ending in "?"), preserve it —
+   resolving one is a content decision: ask Sid, and record it under Pending decisions →
+   Settled with a note for Andrea to confirm.
 3. **Never invent details.** No invented sensory/atmospheric details, artisan anecdotes,
    statistics, dates, or product facts — ever. Rule applies to example copy too.
    Only observed/reported specifics from the source documents.
@@ -108,7 +110,17 @@ Layouts: light and airy, minimal borders, generous whitespace, sentence/title ca
 
 - "Balizen — by Zen Zen Garden Home" lockup: seen in Brand Palette whiteboard draft;
   NOT yet in the approved style guide. Ask before adding to the Identity page.
-- Slide 9's "A cohesive, clear and distinct design sensibility?" — the question mark is in the
-  source. Keep it until Andrea settles it.
 - Brand book slides 15–75 are unadapted Cisco boilerplate — never seed them as Balizen content.
 - Access control (public vs password-gated) — Sid decides at deploy time.
+- The gingko symbol's meaning: the style guide sheet assigns "Balizen signature · Made with
+  love · Local", but the website footer pairs it with "Doing something positive for the
+  planet". Flagged on the Symbols page — confirm the mapping with Andrea.
+- Storytelling's "People living with disability" / "People living with illness" wording
+  (Sid's rewording of the whiteboard's "handicap" / "cancer, etc.") — confirm with Andrea.
+
+### Settled
+
+- Slide 9's "A cohesive, clear and distinct design sensibility?" — RESOLVED 16 Aug 2026 on
+  Sid's instruction: affirmed as a pillar (question mark dropped), and all four pillars
+  regrammared to complete "we want their experience to be:". Andrea to confirm, since the
+  source slide was marked in-progress.

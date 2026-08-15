@@ -4,7 +4,7 @@ section: Design Guides
 source: whiteboard transcription (Aug 2026)
 status: draft-unapproved
 updated: 2026-08-15
-note: On Sid's to-add list (with theme guide sub-item). Nearest to graduation.
+note: Covers file specs only. A theme guide (the look and feel per season) is still to be written.
 ---
 
 These are the file specs for product shots on the [Website](/website-guide/). For the look and feel — light, fresh, natural elegance — see [Social Media: Formats](/social-media-formats/).
