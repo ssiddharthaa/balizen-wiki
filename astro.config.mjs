@@ -15,6 +15,11 @@ export default defineConfig({
 	// what enables the sitemap; until then the build logs a skip warning.
 	// site: 'https://brand.balizenhome.com',
 
+	// Lets astro:assets rasterize our own SVG artwork (the Symbols page's PNG
+	// downloads). "dangerously" refers to untrusted SVG input — these are the
+	// brand's own files, checked into src/assets.
+	image: { dangerouslyProcessSVG: true },
+
 	// The wiki has no landing page of its own — the first approved page is the front door.
 	redirects: {
 		'/': '/the-balizen-brand/',
