@@ -391,6 +391,16 @@ body {
 		margin-inline: auto;
 	}
 
+	/* Line the "On this page" control up with that centred content. Its summary
+	   carries 1rem of its own padding, so the box is widened by that much on
+	   each side and the label lands on the content's edge — the same
+	   relationship it has when the sidebar is open, and clear of the collapse
+	   chevron at the far left. */
+	html[data-sidebar-collapsed] #starlight__mobile-toc {
+		max-width: calc(var(--sl-content-width) + 2rem);
+		margin-inline: auto;
+	}
+
 	/* Toggle lives outside the pane (injected into <body>) so a transformed
 	   sidebar can never carry it off-screen or clip it. */
 	.sidebar-toggle {
