@@ -49,6 +49,10 @@ export default defineConfig({
 			// that rule is positional, so keep the group order here in sync with it.
 			sidebar: [
 				{
+					label: 'Start here',
+					items: [{ label: 'Home', link: '/' }],
+				},
+				{
 					label: 'The Brand',
 					items: [
 						{ label: 'The Balizen Brand', slug: 'the-balizen-brand' },

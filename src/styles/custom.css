@@ -81,10 +81,11 @@ body {
 	font-weight: 600;
 }
 
-/* The definitive/practical hinge (Sid's IA, Aug 2026): groups 1–3 describe the
-   brand, groups 4+ apply it. A quiet rule before "Design Guides" marks the turn.
+/* The definitive/practical hinge (Sid's IA, Aug 2026): after Home, groups 2–4
+   describe the brand, groups 5+ apply it. A quiet rule before "Design Guides"
+   marks the turn.
    POSITIONAL — if the sidebar group order in astro.config.mjs changes, move this. */
-.sidebar-content ul.top-level > li:nth-child(4) {
+.sidebar-content ul.top-level > li:nth-child(5) {
 	margin-top: 1.1rem;
 	padding-top: 1.1rem;
 	border-top: 1px solid var(--line);
