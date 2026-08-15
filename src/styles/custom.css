@@ -264,6 +264,59 @@ body {
    .main-frame inert, so the whole drawer is CSS keyed off that attribute —
    no component override. These rules are unlayered, so they beat
    @layer starlight.core without needing !important. */
+/* ---------- Mobile header: menu · wordmark · search ----------
+   Per Sid's mockup (16 Aug 2026): hamburger on the left, wordmark centred,
+   search on the right, and no "On this page" bar. The wordmark is taken out
+   of flow so it centres on the viewport rather than on the space left over
+   beside the buttons — it positions against the fixed <header>, which is the
+   nearest positioned ancestor. */
+@media (max-width: 49.999rem) {
+	starlight-menu-button button {
+		inset-inline-start: var(--sl-nav-pad-x);
+		inset-inline-end: auto;
+		/* Flat, to match the search icon opposite it — Starlight's default is a
+		   white pill with a drop shadow, heavier than the brand allows. */
+		background-color: transparent;
+		box-shadow: none;
+		color: var(--ink);
+	}
+	starlight-menu-button[aria-expanded='true'] button {
+		background-color: transparent;
+	}
+
+	/* Reserve the button's room on the leading edge instead of the trailing one. */
+	[data-has-sidebar] header.header {
+		padding-inline-start: calc(
+			var(--sl-nav-gap) + var(--sl-nav-pad-x) + var(--sl-menu-button-size)
+		);
+		padding-inline-end: var(--sl-nav-pad-x);
+	}
+
+	header.header .title-wrapper {
+		position: absolute;
+		inset-inline: 0;
+		justify-content: center;
+		/* The bar spans the buttons, so only the wordmark itself takes clicks. */
+		pointer-events: none;
+	}
+	header.header .title-wrapper > * {
+		pointer-events: auto;
+	}
+
+	/* Search to the trailing edge (the right-hand group is hidden at this width). */
+	header.header > .header > div:not(.title-wrapper):not(.right-group) {
+		margin-inline-start: auto;
+	}
+
+	/* No mobile "On this page" bar — and reclaim the height it reserved. */
+	mobile-starlight-toc {
+		display: none;
+	}
+	html {
+		--sl-mobile-toc-height: 0rem;
+	}
+}
+
 @media (max-width: 49.999rem) {
 	.sidebar-pane {
 		/* Starlight drives visibility off --sl-sidebar-visibility; we take it over
@@ -324,8 +377,18 @@ body {
 		transition: transform 0.25s ease, visibility 0s linear 0.25s;
 	}
 
-	html[data-sidebar-collapsed] .main-frame {
-		padding-inline-start: 0;
+	/* One variable drives the frame's padding AND the mobile ToC bar's inset, so
+	   zeroing it collapses the layout evenly instead of leaving the ToC (and its
+	   underline) starting a sidebar-width in from the left. */
+	html[data-sidebar-collapsed] {
+		--sl-content-inline-start: 0rem;
+	}
+
+	/* With the sidebar gone the content would sit hard against the left edge;
+	   centring the container keeps the margins even. The panels stay full width,
+	   so the header and ToC dividers still span the page. */
+	html[data-sidebar-collapsed] .sl-container {
+		margin-inline: auto;
 	}
 
 	/* Toggle lives outside the pane (injected into <body>) so a transformed
