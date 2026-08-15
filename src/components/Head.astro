@@ -147,6 +147,99 @@ const cssVars = [
 </script>
 
 {/*
+	Sidebar behaviour (Sid, 16 Aug 2026).
+
+	Mobile — Starlight's menu button already toggles [data-mobile-menu-expanded]
+	on <body> and marks .main-frame inert, so custom.css does the drawer purely
+	from that attribute. This adds the tappable backdrop, and closes the drawer
+	on navigation so the slide-out is visible rather than cut off by the load.
+
+	Desktop — a collapse toggle, open by default, choice persisted. The attribute
+	is applied here in <head> so a collapsed sidebar never flashes open first.
+*/}
+<script is:inline>
+	(() => {
+		const DESKTOP = '(min-width: 50rem)';
+		const KEY = 'balizen:sidebar-collapsed';
+
+		// Pre-paint: restore a collapsed sidebar before the first frame.
+		try {
+			if (localStorage.getItem(KEY) === '1') {
+				document.documentElement.setAttribute('data-sidebar-collapsed', '');
+			}
+		} catch {}
+
+		const ready = (fn) =>
+			document.readyState === 'loading'
+				? document.addEventListener('DOMContentLoaded', fn, { once: true })
+				: fn();
+
+		ready(() => {
+			const menuButton = document.querySelector('starlight-menu-button button');
+
+			// --- Mobile backdrop -------------------------------------------------
+			const backdrop = document.createElement('div');
+			backdrop.className = 'sl-backdrop';
+			backdrop.setAttribute('aria-hidden', 'true');
+			// Route the close through Starlight's own button so its aria-expanded
+			// and inert bookkeeping stay correct.
+			backdrop.addEventListener('click', () => menuButton && menuButton.click());
+			document.body.appendChild(backdrop);
+
+			// Close the drawer on navigation. The click is deferred by one
+			// animation so the panel is seen sliding away instead of vanishing
+			// with the page swap.
+			document.addEventListener('click', (e) => {
+				if (!document.body.hasAttribute('data-mobile-menu-expanded')) return;
+				const link = e.target.closest('.sidebar-content a[href]');
+				if (!link || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+				if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+				e.preventDefault();
+				if (menuButton) menuButton.click();
+				setTimeout(() => {
+					location.href = link.href;
+				}, 260);
+			});
+
+			// --- Desktop collapse toggle ----------------------------------------
+			const toggle = document.createElement('button');
+			toggle.type = 'button';
+			toggle.className = 'sidebar-toggle';
+			toggle.innerHTML =
+				'<svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true">' +
+				'<path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" ' +
+				'stroke-linejoin="round" d="M10 3 5 8l5 5"/></svg>';
+
+			const syncLabel = () => {
+				const collapsed = document.documentElement.hasAttribute('data-sidebar-collapsed');
+				toggle.setAttribute('aria-expanded', String(!collapsed));
+				toggle.setAttribute('aria-label', collapsed ? 'Show sidebar' : 'Hide sidebar');
+			};
+
+			toggle.addEventListener('click', () => {
+				const collapsed = document.documentElement.toggleAttribute('data-sidebar-collapsed');
+				try {
+					localStorage.setItem(KEY, collapsed ? '1' : '0');
+				} catch {}
+				syncLabel();
+			});
+
+			syncLabel();
+			toggle.setAttribute('aria-controls', 'starlight__sidebar');
+			document.body.appendChild(toggle);
+
+			// Leaving desktop clears the collapse so the mobile drawer is reachable.
+			matchMedia(DESKTOP).addEventListener('change', (e) => {
+				if (!e.matches) document.documentElement.removeAttribute('data-sidebar-collapsed');
+				else if (localStorage.getItem(KEY) === '1')
+					document.documentElement.setAttribute('data-sidebar-collapsed', '');
+				syncLabel();
+			});
+		});
+	})();
+</script>
+
+{/*
 	Lightbox: click any content image to see it enlarged (Sid, 15 Aug 2026).
 	Applies to images in the page body — the logo-file and symbol tiles are
 	excluded, since hovering those reveals download buttons instead. The

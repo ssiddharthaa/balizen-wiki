@@ -259,6 +259,126 @@ body {
 	font-size: 0.8rem;
 }
 
+/* ---------- Mobile: sidebar as a slide-in drawer ----------
+   Starlight already sets [data-mobile-menu-expanded] on <body> and marks
+   .main-frame inert, so the whole drawer is CSS keyed off that attribute —
+   no component override. These rules are unlayered, so they beat
+   @layer starlight.core without needing !important. */
+@media (max-width: 49.999rem) {
+	.sidebar-pane {
+		/* Starlight drives visibility off --sl-sidebar-visibility; we take it over
+		   so the pane stays in the DOM long enough to animate out. */
+		visibility: hidden;
+		width: 80%;
+		max-width: 21rem;
+		transform: translateX(-100%);
+		background-color: var(--ui-page-bg);
+		border-inline-end: 1px solid var(--line);
+		transition: transform 0.28s ease, visibility 0s linear 0.28s;
+	}
+
+	body[data-mobile-menu-expanded] .sidebar-pane {
+		visibility: visible;
+		transform: translateX(0);
+		transition: transform 0.28s ease, visibility 0s;
+	}
+
+	/* Backdrop (element injected in Head.astro so it can be tapped to close). */
+	.sl-backdrop {
+		position: fixed;
+		inset: var(--sl-nav-height) 0 0 0;
+		z-index: calc(var(--sl-z-index-menu) - 1);
+		background: rgba(51, 66, 76, 0.45);
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity 0.28s ease;
+	}
+
+	body[data-mobile-menu-expanded] .sl-backdrop {
+		opacity: 1;
+		pointer-events: auto;
+	}
+}
+
+/* Desktop only: the backdrop never participates. */
+@media (min-width: 50rem) {
+	.sl-backdrop {
+		display: none;
+	}
+}
+
+/* ---------- Desktop: collapsible sidebar ----------
+   Default open; the toggle persists a choice in localStorage and the
+   attribute is applied pre-paint (Head.astro) so there is no flash. */
+@media (min-width: 50rem) {
+	.sidebar-pane {
+		transition: transform 0.25s ease, visibility 0s;
+	}
+	.main-frame {
+		transition: padding-inline-start 0.25s ease;
+	}
+
+	html[data-sidebar-collapsed] .sidebar-pane {
+		transform: translateX(-100%);
+		visibility: hidden;
+		transition: transform 0.25s ease, visibility 0s linear 0.25s;
+	}
+
+	html[data-sidebar-collapsed] .main-frame {
+		padding-inline-start: 0;
+	}
+
+	/* Toggle lives outside the pane (injected into <body>) so a transformed
+	   sidebar can never carry it off-screen or clip it. */
+	.sidebar-toggle {
+		position: fixed;
+		top: calc(var(--sl-nav-height) + 0.55rem);
+		left: calc(var(--sl-sidebar-width) - 2.35rem);
+		z-index: calc(var(--sl-z-index-menu) + 1);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 1.75rem;
+		height: 1.75rem;
+		padding: 0;
+		border: 1px solid var(--line);
+		border-radius: 999px;
+		background: var(--ui-page-bg);
+		color: var(--teal-dark);
+		cursor: pointer;
+		transition: left 0.25s ease, background 0.15s;
+	}
+
+	.sidebar-toggle:hover {
+		background: var(--teal-tint);
+	}
+
+	html[data-sidebar-collapsed] .sidebar-toggle {
+		left: 0.6rem;
+	}
+
+	/* Chevron points back toward the sidebar's edge: left when open, right when
+	   collapsed — the direction the click will move the panel. */
+	html[data-sidebar-collapsed] .sidebar-toggle svg {
+		transform: scaleX(-1);
+	}
+}
+
+@media (max-width: 49.999rem) {
+	.sidebar-toggle {
+		display: none;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.sidebar-pane,
+	.main-frame,
+	.sl-backdrop,
+	.sidebar-toggle {
+		transition: none;
+	}
+}
+
 /* ---------- Home page (index.mdx, splash template) ---------- */
 .home-hero {
 	margin: 0.5rem 0 2rem;
