@@ -1,0 +1,98 @@
+---
+title: Symbols
+section: Identity System
+source: style-guide-pdf (Symbols sheet); icons whiteboard + usage examples + SVG artwork supplied by Sid (Aug 2026)
+status: approved
+updated: 2026-08-15
+note: Meanings transcribed verbatim from the Symbols sheet. Nine symbols carry no meaning on the sheet and are shown as artwork only. The website footer pairs the gingko with "Doing something positive for the planet", while the sheet assigns it "Balizen signature · Made with love · Local" — confirm the mapping with Andrea.
+---
+
+import { Image } from 'astro:assets';
+import PhotoSet from '../../components/PhotoSet.astro';
+import SymbolGrid from '../../components/SymbolGrid.astro';
+
+import symbolsSheet from '../../assets/icons/old style guide example.png';
+import usageWebsite from '../../assets/icons/usage example website.png';
+import usageSocial1 from '../../assets/icons/usage eg social media1.png';
+import usageSocial2 from '../../assets/icons/usage eg social media2.png';
+import usageEmail1 from '../../assets/icons/usage eg email1.png';
+import usageEmail2 from '../../assets/icons/usage eg email2.png';
+
+The symbols — the working whiteboard calls them icons, the same family — are
+nature-drawn marks: leaves, blooms, shells, fronds. They carry the brand's
+values in miniature. Eight of them have defined meanings in the style guide;
+the rest are decorative artwork from the same family.
+
+## Symbols and their meanings
+
+<SymbolGrid
+	items={[
+		{ file: 'Gingko', meanings: ['Balizen signature', 'Made with love', 'Local'] },
+		{ file: 'Ylang-Ylang', meanings: ['Eco-friendly', 'Sustainable'] },
+		{ file: 'Coffee', meanings: ['Preserving traditional handicrafts/cultural heritage'] },
+		{ file: 'Floral', meanings: ['Preserving traditional handicrafts/cultural heritage 2'] },
+		{ file: 'Heart Bloom', meanings: ['Fair trade', 'Ethically made/sourced'] },
+		{ file: 'Orchid', meanings: ['Empowering women'] },
+		{ file: 'Bloom', meanings: ['Handmade', 'Small-batch production'] },
+		{ file: 'Fern', meanings: ['Timeless design'] },
+	]}
+/>
+
+<PhotoSet layout="single" label="Symbols — style guide sheet">
+	<Image src={symbolsSheet} alt="Style guide Symbols sheet: a gingko leaf labelled Balizen signature, made with love, local; a ylang-ylang flower labelled eco-friendly, sustainable; a coffee-bean cross and an ornate scroll medallion both labelled preserving traditional handicrafts/cultural heritage; a flower with a heart centre labelled fair trade, ethically made/sourced; an orchid labelled empowering women; a curling vine labelled handmade, small-batch production; a leaf column labelled timeless design; and nine further unlabelled symbols." />
+</PhotoSet>
+
+## Additional symbols
+
+Unlabelled on the style guide sheet — same family, no assigned meaning yet.
+
+<SymbolGrid
+	items={[
+		{ file: 'Blob' },
+		{ file: 'Fan' },
+		{ file: 'Fern2' },
+		{ file: 'Flower' },
+		{ file: 'Flower2' },
+		{ file: 'Leaf' },
+		{ file: 'Leaf2' },
+		{ file: 'Oval' },
+		{ file: 'Square' },
+	]}
+/>
+
+## Usage
+
+From the icons whiteboard:
+
+> Icons can be overlaid on top of any layout, they can become compositional
+> elements, background elements, or even bullet points
+
+### On the website
+
+Value icons with labels — each symbol paired with the value it stands for.
+See the [Website Guide](/website-guide/).
+
+<PhotoSet layout="single" label="Website — six value icons with labels">
+	<Image src={usageWebsite} alt="Website value-icon row on a panel background: the heart-bloom flower for fair trade and ethical sourcing, the ylang-ylang for environmental sustainability, the curling vine for handmade small-batch production, the coffee-bean cross for preserving traditional crafts and cultural identity, the orchid for empowering women, and the gingko leaf for doing something positive for the planet." />
+</PhotoSet>
+
+### On social media
+
+Compositional and background elements — a symbol enlarged and tinted behind
+the subject, or paired with a headline as a lockup.
+
+<PhotoSet layout="pair" label="Social media — icons as background elements ('The Rogue Dandy') and as a headline lockup ('In touch with nature')">
+	<Image src={usageSocial1} alt="'The Rogue Dandy' campaign frame: a model in mixed Balizen prints and boots, with enlarged leaf and bloom symbols tinted pale green as background elements, and the Since 1992 logo lockup in the corner." />
+	<Image src={usageSocial2} alt="'In touch with nature' campaign frame: a rider on a grey horse on the beach in Balizen prints, the palm-frond symbol set beside the headline as a lockup." />
+</PhotoSet>
+
+### In email
+
+Background elements and title lockups — pale transparent symbols behind
+headers, and small icons paired with a season's colorway titles. See the
+[Email Communication Guide](/email-communication-guide/).
+
+<PhotoSet layout="pair" label="Email — transparent icons behind the header and shipping sections; colorway title lockups (Avocado Turmeric · Claret Peach · Onyx Indigo)">
+	<Image src={usageEmail1} alt="'2 weeks left…' email header: the Balizen teal circle badge over pale transparent flower-burst and frangipani symbols, a Shipping title with a faint delivery-truck illustration, and symbol shapes used as bullet markers beside each shipping note." />
+	<Image src={usageEmail2} alt="Email colorway sections, each title paired with a small symbol: Avocado Turmeric with the fern in green, Claret Peach with the gingko in pink, Onyx Indigo with the palm frond in slate blue — each above a grid of products in that colorway." />
+</PhotoSet>

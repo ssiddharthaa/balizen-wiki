@@ -1,0 +1,33 @@
+---
+title: Color
+section: Identity System
+source: style-guide-pdf + brand-palette-draft (whiteboard); lede line from Sid's to-add note (Aug 2026)
+status: approved
+updated: 2026-08-15
+---
+
+import Swatches from '../../components/Swatches.astro';
+
+Color is an integral part of the Balizen visual identity system.
+
+{/* Swatch colors are resolved live from data/tokens.json (single source for all
+    colors); names and notes below are transcribed from the source table. */}
+
+## Core palette
+
+<Swatches
+	items={[
+		{ token: 'balizen-teal', name: 'Balizen Teal', note: 'Primary' },
+		{ token: 'tree-hugger', name: 'Tree Hugger' },
+		{ token: 'glow', name: 'Glow' },
+		{ token: 'cream', name: 'Cream' },
+		{ token: 'blush', name: 'Blush' },
+		{ token: 'spice', name: 'Spice' },
+		{ token: 'spice-accent', name: 'Spice (accent)' },
+		{ token: 'paynes-grey', name: "Payne's Grey" },
+	]}
+/>
+
+## Color in documents
+
+*Document convention (Sid): internal & customer-facing documents stay monochrome/minimalist — Balizen Teal and its shades/tints (dark #2B7A80, tint #E9F4F5) first, with Tree Hugger, Cream, and Payne's Grey used sparingly. Spice and Blush only when explicitly requested.*

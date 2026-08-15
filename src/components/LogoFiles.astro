@@ -1,0 +1,109 @@
+---
+/**
+ * The logo artwork files in src/assets/logo (supplied by Sid, Aug 2026),
+ * shown at working size. Like Swatches, this component owns its imports —
+ * the page supplies no props, so the tiles can't drift from the files.
+ *
+ * The wordmark SVG is white artwork, so it sits on a Balizen Teal tile
+ * (matching the reel end frames); the two monogram marks carry their own
+ * background inside the SVG and sit on the plain panel.
+ */
+import { Image } from 'astro:assets';
+import wordmark from '../assets/logo/logo1.svg';
+import monogramSquare from '../assets/logo/logo2.svg';
+import monogramCircle from '../assets/logo/logo3.svg';
+
+const files = [
+	{
+		src: wordmark,
+		name: 'logo1.svg',
+		note: 'Balizen wordmark — white artwork, shown here on Balizen Teal',
+		tile: 'teal',
+	},
+	{
+		src: monogramSquare,
+		name: 'logo2.svg',
+		note: 'B monogram — teal square',
+		tile: 'panel',
+	},
+	{
+		src: monogramCircle,
+		name: 'logo3.svg',
+		note: 'B monogram — teal circle',
+		tile: 'panel',
+	},
+];
+---
+
+<div class="logo-files not-content">
+	{
+		files.map(({ src, name, note, tile }) => (
+			<figure class:list={['logo-file', `tile-${tile}`]}>
+				<div class="tile">
+					<Image src={src} alt={note} height="120" />
+				</div>
+				<figcaption>
+					<code>{name}</code>
+					<span>{note}</span>
+				</figcaption>
+			</figure>
+		))
+	}
+</div>
+
+<style>
+	.logo-files {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+		gap: 0.75rem;
+		margin: 1.75rem 0 2.5rem;
+	}
+
+	.logo-file {
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0.7rem;
+	}
+
+	.tile {
+		border-radius: 10px;
+		padding: 1.5rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 9rem;
+	}
+
+	.tile-teal .tile {
+		background: var(--teal);
+	}
+
+	.tile-panel .tile {
+		background: var(--panel);
+	}
+
+	.tile :global(img) {
+		display: block;
+		max-width: 100%;
+		height: auto;
+		max-height: 7rem;
+		object-fit: contain;
+	}
+
+	figcaption {
+		display: flex;
+		flex-direction: column;
+		gap: 0.1rem;
+		font-family: var(--font-sans);
+		font-size: 0.8rem;
+		line-height: 1.45;
+		color: var(--grey);
+	}
+
+	figcaption code {
+		font-size: 0.78rem;
+		background: none;
+		padding: 0;
+	}
+</style>

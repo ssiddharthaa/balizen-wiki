@@ -46,6 +46,8 @@ Getting the language right matters — especially for a brand that prides itself
 | "Capiz shell" | "Mother of pearl" (different material) |
 | "Crochet" or "knit" (specify which) | Using them interchangeably (they're different crafts) |
 
+**Why this matters:** Every entry here names a real, specific material — and several of the wrong words describe genuinely different things. Reclaimed and recycled wood are different processes; capiz shell and mother of pearl are different materials; crochet and knit are different crafts. "Remnant fabric" tells the truth about the patchwork and zero-waste lines without making the material sound like waste. Naming materials exactly is part of owning what's real.
+
 ## Processes and roles
 
 | Use ✅ | Don't Use ❌ |
@@ -56,3 +58,5 @@ Getting the language right matters — especially for a brand that prides itself
 | "Our workshop" / "our Bali workshop" | "Our factory" / "our facility" |
 | "The production team" / "Kawok's team" | Individual cutter names (unless confirmed with Andrea) |
 | "Cutter" (Kawok's role) | "Sewer" (he oversees cutting, not sewing) |
+
+**Why this matters:** These words describe real people and a real place. Kawok is the cutter — he oversees cutting, not sewing — and getting a colleague's role wrong in public copy misrepresents him. "Workshop" describes how the place actually works; "factory" contradicts it. Individual names go into copy only once confirmed with Andrea — naming the people is the voice, but only with the facts checked.

@@ -1,0 +1,91 @@
+---
+/**
+ * Grid of Balizen symbols, rendered from the SVG artwork in
+ * src/assets/icons/svgs/Illustrations (supplied by Sid, Aug 2026).
+ *
+ * Meanings come from the style guide's Symbols sheet and are transcribed
+ * verbatim on the page — a symbol whose sheet entry carries no meaning is
+ * shown as artwork only, never given an invented one.
+ *
+ * Usage:
+ *   <SymbolGrid items={[{ file: 'Gingko', meanings: ['Balizen signature', 'Made with love', 'Local'] }, …]} />
+ */
+import { Image } from 'astro:assets';
+
+interface Props {
+	items: { file: string; meanings?: string[] }[];
+}
+
+const svgs = import.meta.glob<{ default: ImageMetadata }>(
+	'../assets/icons/svgs/Illustrations/*.svg',
+	{ eager: true }
+);
+
+const { items } = Astro.props;
+const resolved = items.map((item) => {
+	const mod = svgs[`../assets/icons/svgs/Illustrations/${item.file}.svg`];
+	if (!mod) {
+		throw new Error(
+			`SymbolGrid: "${item.file}.svg" not found in src/assets/icons/svgs/Illustrations`
+		);
+	}
+	return { ...item, src: mod.default };
+});
+---
+
+<div class="symbol-grid not-content">
+	{
+		resolved.map(({ file, meanings, src }) => (
+			<figure class="symbol">
+				<div class="art">
+					<Image src={src} alt={meanings ? meanings.join(' · ') : `${file} symbol`} width="96" height="96" />
+				</div>
+				{meanings && (
+					<figcaption>
+						{meanings.map((m) => (
+							<span>{m}</span>
+						))}
+					</figcaption>
+				)}
+			</figure>
+		))
+	}
+</div>
+
+<style>
+	.symbol-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+		gap: 0.75rem;
+		margin: 1.75rem 0 2.5rem;
+	}
+
+	.symbol {
+		margin: 0;
+		background: var(--panel);
+		border-radius: 10px;
+		padding: 1.1rem 0.9rem 1rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.75rem;
+	}
+
+	.art :global(img) {
+		display: block;
+		width: 4.5rem;
+		height: 4.5rem;
+		object-fit: contain;
+	}
+
+	figcaption {
+		display: flex;
+		flex-direction: column;
+		gap: 0.15rem;
+		text-align: center;
+		font-family: var(--font-sans);
+		font-size: 0.8rem;
+		line-height: 1.4;
+		color: var(--grey);
+	}
+</style>

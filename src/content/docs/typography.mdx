@@ -1,0 +1,58 @@
+---
+title: Typography
+section: Identity System
+source: style-guide-pdf (Fonts sheet); specimen sample lines from prototype + tagline hierarchy
+status: approved
+updated: 2026-08-15
+---
+
+import { Image } from 'astro:assets';
+import PhotoSet from '../../components/PhotoSet.astro';
+import TypeSpec from '../../components/TypeSpec.astro';
+
+import fontsSheet from '../../assets/typography/old Fonts style guide example.png';
+
+Balizen sets headings in serif display faces and body text in Area Inktrap.
+The specimens below render live in the site's fallback faces; the style guide
+sheet at the end shows the true faces.
+
+<TypeSpec
+	label="Heading 1a · Scotch Display Light (with 0.5pt stroke)"
+	variant="h1"
+	sample="A bit of Bali to take home with you."
+	note="Shown in Playfair Display until the Adobe Fonts embed lands (placeholder in the site head). Production loads Scotch Display Light via Adobe Fonts."
+/>
+
+<TypeSpec
+	label="Heading 1b · Playfair Display Regular"
+	variant="h1"
+	sample="From smile to smile."
+	note="Brand-approved free fallback, loaded via Google Fonts."
+/>
+
+<TypeSpec
+	label="Heading 2 · Superclarendon Regular"
+	variant="h2"
+	sample="Handmade · fair trade · eco-friendly"
+	note="Serif fallback shown. Office fallback: Cambria."
+/>
+
+<TypeSpec
+	label="Heading 3 · Area Inktrap ExtraBold"
+	variant="h3"
+	sample="Proudly hugging trees since 1992. 🌿"
+	note="Shown in Instrument Sans until the Adobe Fonts embed lands. Production loads Area Inktrap ExtraBold via Adobe Fonts."
+/>
+
+<TypeSpec
+	label="Body · Area Inktrap Regular"
+	variant="body"
+	sample="Hand silk-screened textiles, homewares, and resort wear — rooted in artisan relationships since 1992. Soft cotton, rich indigo. Made to be lived in."
+	note="Shown in Instrument Sans until the Adobe Fonts embed lands. Production loads Area Inktrap via Adobe Fonts. Office fallback: Calibri."
+/>
+
+Office-safe fallbacks: Cambria (headings), Calibri (body).
+
+<PhotoSet layout="single" label="Fonts — style guide sheet">
+	<Image src={fontsSheet} alt="Style guide Fonts sheet: 'Scotch Display Light (with 0.5pt stroke): Heading 1a', 'Playfair Display Regular: Heading 1b', 'Superclarendon Regular: Heading 2', 'Area Inktrap ExtraBold: Heading 3', and 'Area Inktrap Regular: Body', each set in its own face." />
+</PhotoSet>
