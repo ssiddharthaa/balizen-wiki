@@ -73,7 +73,17 @@ Layouts: light and airy, minimal borders, generous whitespace, sentence/title ca
 - `data/glossary.json` drives a `<G term="...">` inline component: dotted teal underline,
   tooltip on hover (desktop) / tap (mobile), optional link to the term's page.
 - A remark plugin auto-wraps the FIRST occurrence of each glossary term per page.
-  Manual `<G>` always wins; auto-wrap never fires inside headings, quotes, or code.
+  Manual `<G>` always wins. Auto-wrap never fires:
+  - inside headings, quotes, or code;
+  - inside tables — skipped wholesale, because the do/don't tables set correct and
+    incorrect phrasings side by side and a tooltip in either column reads as a
+    comment on the wrong one;
+  - on the page a term's own `link` points to — no self-referential "See page →"
+    pointing at the page you are already reading.
+- A term may set `"matchCase": true` in `data/glossary.json` to match case-sensitively.
+  Set on the proper nouns — Brand Promise · Three Lenses · Fair Trade Federation · Kawok —
+  so that ordinary lowercase prose ("a promise we make to our customers", "these three
+  lenses") stays plain text instead of picking up a tooltip it doesn't mean.
 - When the Correct Terms Glossary changes in Notion, `data/glossary.json` is updated to match —
   the JSON mirrors the tables, it never freelances.
 

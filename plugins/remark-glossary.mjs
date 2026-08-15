@@ -4,9 +4,13 @@
  *
  * Rules (CLAUDE.md):
  *  - first occurrence per term per page only
- *  - never fires inside headings, blockquotes, or code
- *  - never fires inside a "Don't Use ❌" table column: a glossary tooltip on a
- *    phrase we tell people not to use would read as an endorsement
+ *  - never fires inside headings, blockquotes, code, or tables. Tables are skipped
+ *    wholesale: the do/don't tables set correct and incorrect phrasings side by side,
+ *    and a tooltip in either column reads as a comment on the wrong one.
+ *  - never fires on the page a term's own `link` points to — a tooltip offering
+ *    "See page →" to the page you are already reading is noise
+ *  - terms flagged "matchCase": true match case-sensitively, so proper nouns
+ *    (Kawok, Brand Promise) don't fire on incidental lowercase prose
  *  - manual <G term="..."> always wins: a term used manually anywhere on a page
  *    is excluded from auto-wrapping on that page
  *
@@ -15,13 +19,16 @@
  */
 
 // Never descend into these node types.
-// headings/blockquotes/code per the content law; links to avoid nested <a>;
+// headings/blockquotes/code/tables per the content law; links to avoid nested <a>;
 // html/jsx to avoid touching raw markup (including our own inserted spans).
 const SKIP = new Set([
 	'heading',
 	'blockquote',
 	'code',
 	'inlineCode',
+	'table',
+	'tableRow',
+	'tableCell',
 	'html',
 	'link',
 	'linkReference',
@@ -82,14 +89,37 @@ function mdxWrapNode(matchText, entry) {
 export default function remarkGlossary(options = {}) {
 	const terms = (options.terms ?? []).map((entry) => ({
 		...entry,
-		// Word-boundary, case-insensitive. Terms may contain spaces.
-		re: new RegExp(`(?<![A-Za-z0-9])${escapeRegExp(entry.term)}(?![A-Za-z0-9])`, 'i'),
+		// Word-boundary. Terms may contain spaces. Proper nouns opt into
+		// case-sensitivity with "matchCase": true so that e.g. "Kawok" fires but
+		// an unrelated lowercase use does not.
+		re: new RegExp(
+			`(?<![A-Za-z0-9])${escapeRegExp(entry.term)}(?![A-Za-z0-9])`,
+			entry.matchCase ? '' : 'i'
+		),
 	}));
+
+	/** '/who-we-speak-to/' -> 'who-we-speak-to'; tolerates anchors and missing slashes. */
+	const linkToSlug = (link) =>
+		String(link).split('#')[0].split('?')[0].replace(/^\/+|\/+$/g, '').toLowerCase();
 
 	return function transformer(tree, file) {
 		if (terms.length === 0) return;
-		const isMdx = /\.mdx$/i.test(String(file.path ?? ''));
+		const filePath = String(file.path ?? '').replace(/\\/g, '/');
+		const isMdx = /\.mdx$/i.test(filePath);
 		const makeWrap = isMdx ? mdxWrapNode : htmlWrapNode;
+
+		// Slug of the page being built, so a term never links to the page it is on.
+		const pageMatch = filePath.match(/src\/content\/docs\/(.+)$/);
+		const pageSlug = pageMatch
+			? pageMatch[1].replace(/\.mdx?$/i, '').replace(/\/index$/i, '').toLowerCase()
+			: null;
+
+		// Drop self-referential terms up front: on /brand-story/, "Brand Promise"
+		// stays plain text rather than offering a "See page →" to this same page.
+		const active = pageSlug
+			? terms.filter((entry) => !entry.link || linkToSlug(entry.link) !== pageSlug)
+			: terms;
+		if (active.length === 0) return;
 
 		// Manual <G term="..."> wins: exclude those terms from auto-wrap on this page.
 		const source = String(file.value ?? '');
@@ -98,30 +128,8 @@ export default function remarkGlossary(options = {}) {
 			done.add(m[1].toLowerCase());
 		}
 
-		/** Column indices of a table's "Don't Use ❌" columns. */
-		const dontColumns = (table) => {
-			const [header] = table.children ?? [];
-			if (!header) return new Set();
-			const text = (n) =>
-				n.type === 'text' || n.type === 'inlineCode'
-					? n.value
-					: (n.children ?? []).map(text).join('');
-			return new Set(
-				header.children.flatMap((cell, i) => (text(cell).includes('❌') ? [i] : []))
-			);
-		};
-
 		const walk = (node) => {
 			if (!node.children) return;
-			if (node.type === 'table') {
-				const skipCols = dontColumns(node);
-				for (const row of node.children) {
-					row.children.forEach((cell, i) => {
-						if (!skipCols.has(i)) walk(cell);
-					});
-				}
-				return;
-			}
 			for (let i = 0; i < node.children.length; i++) {
 				const child = node.children[i];
 				if (SKIP.has(child.type)) continue;
@@ -131,7 +139,7 @@ export default function remarkGlossary(options = {}) {
 				}
 				// Find the earliest match among not-yet-wrapped terms in this text node.
 				let best = null;
-				for (const entry of terms) {
+				for (const entry of active) {
 					if (done.has(entry.term.toLowerCase())) continue;
 					const m = child.value.match(entry.re);
 					if (m && (best === null || m.index < best.index)) {

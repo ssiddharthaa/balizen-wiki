@@ -1,8 +1,8 @@
 {
-  "_comment": "Tooltip glossary. Mirrors V&T V4 Correct Terms Glossary + core brand terms. Auto-linked first occurrence per page; term -> tooltip text (+ optional link to page).",
+  "_comment": "Tooltip glossary. Mirrors V&T V4 Correct Terms Glossary + core brand terms. Auto-linked first occurrence per page; term -> tooltip text (+ optional link to page). Optional \"matchCase\": true makes a term match case-sensitively — used for proper nouns.",
   "terms": [
     { "term": "From smile to smile", "tip": "Core tagline — the voice of the Brand Promise. Full line: 'Create with love. Share with joy. Connect from smile to smile.' Never paraphrased.", "link": "/voice-and-tone/" },
-    { "term": "Fair Trade Federation", "tip": "Balizen is a verified MEMBER of the Fair Trade Federation, for over twenty years. Say 'member' — never 'certified' about products.", "link": "/correct-terms-glossary/" },
+    { "term": "Fair Trade Federation", "tip": "Balizen is a verified MEMBER of the Fair Trade Federation, for over twenty years. Say 'member' — never 'certified' about products.", "link": "/correct-terms-glossary/", "matchCase": true },
     { "term": "fair trade workshop", "tip": "Correct phrasing for product-level fair trade claims: 'made in our fair trade workshop' — individual products are not independently certified.", "link": "/correct-terms-glossary/" },
     { "term": "hand silk-screened", "tip": "Balizen's printing technique. Never plain 'printed', never 'batik' (a wax-resist technique we don't use).", "link": "/correct-terms-glossary/" },
     { "term": "seaweed-based dyes", "tip": "Say 'eco-friendly seaweed-based dyes' — specific and true. Not 'natural dyes' (vague) or 'chemical-free' (potentially inaccurate).", "link": "/correct-terms-glossary/" },
@@ -10,10 +10,10 @@
     { "term": "capiz", "tip": "Capiz shell — not 'mother of pearl' (different material). The Gardenia Bali chimes material.", "link": "/correct-terms-glossary/" },
     { "term": "reclaimed wood", "tip": "'Reclaimed wood', not 'recycled wood' — different process.", "link": "/correct-terms-glossary/" },
     { "term": "remnant fabric", "tip": "'Remnant' or 'leftover' fabric — never 'scrap' (sounds like waste). Basis of the patchwork / zero-waste lines.", "link": "/correct-terms-glossary/" },
-    { "term": "Kawok", "tip": "Balizen's cutter — he oversees cutting (not sewing). Twenty years translating Andrea's ideas into finished pieces.", "link": "/correct-terms-glossary/" },
+    { "term": "Kawok", "tip": "Balizen's cutter — he oversees cutting (not sewing). Twenty years translating Andrea's ideas into finished pieces.", "link": "/correct-terms-glossary/", "matchCase": true },
     { "term": "our workshop", "tip": "Always 'workshop' — never 'factory' or 'facility'.", "link": "/correct-terms-glossary/" },
-    { "term": "Brand Promise", "tip": "Balizen = Doing something positive for people & the planet. The single idea we want to own; 'From smile to smile' is how it sounds.", "link": "/brand-story/" },
-    { "term": "Three Lenses", "tip": "Values · The Tourist Journey · Education. Every audience sees Balizen through all three — dial up or down, never drop one.", "link": "/who-we-speak-to/" },
+    { "term": "Brand Promise", "tip": "Balizen = Doing something positive for people & the planet. The single idea we want to own; 'From smile to smile' is how it sounds.", "link": "/brand-story/", "matchCase": true },
+    { "term": "Three Lenses", "tip": "Values · The Tourist Journey · Education. Every audience sees Balizen through all three — dial up or down, never drop one.", "link": "/who-we-speak-to/", "matchCase": true },
     { "term": "from holiday to home", "tip": "The Tourist Journey lens: customers discover Balizen traveling, and the relationship continues long after the trip.", "link": "/who-we-speak-to/" },
     { "term": "social enterprise", "tip": "Balizen trains people just starting out — handicraft, computer work, on-the-job learning. 'Giving people an opportunity to improve themselves.'", "link": "/the-balizen-brand/" },
     { "term": "natural elegance", "tip": "Voice Pillar 5 & brand attribute: refined without fussy, beautifully made and honestly priced. Elegant doesn't mean humorless. 'Luxury' and 'premium' stay banned.", "link": "/voice-and-tone/" }
