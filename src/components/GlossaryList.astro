@@ -1,0 +1,108 @@
+---
+/**
+ * The full glossary, rendered A–Z from data/glossary.json — the same data that
+ * drives every inline tooltip, so this page can never drift from the tooltips.
+ * The JSON mirrors the Notion Correct Terms tables; it never freelances.
+ *
+ * Anchor ids are the kebab-cased term (slugify below). The "link" values in
+ * data/glossary.json point at these anchors — keep the two in sync.
+ */
+import glossary from '../../data/glossary.json';
+
+const PAGE_TITLES: Record<string, string> = {
+	'/the-balizen-brand/': 'The Balizen Brand',
+	'/brand-story/': 'Brand Story',
+	'/brand-experience/': 'Brand Experience',
+	'/who-we-speak-to/': 'Who We Speak To',
+	'/voice-and-tone/': 'Voice & Tone',
+	'/correct-terms-glossary/': 'Correct Terms Glossary',
+};
+
+const slugify = (term: string) =>
+	term
+		.toLowerCase()
+		.replace(/[^a-z0-9]+/g, '-')
+		.replace(/^-+|-+$/g, '');
+
+const entries = [...glossary.terms]
+	.sort((a, b) => a.term.localeCompare(b.term, 'en', { sensitivity: 'base' }))
+	.map((entry) => {
+		const page = 'page' in entry ? (entry as { page?: string }).page : undefined;
+		const pageTitle = page ? PAGE_TITLES[page] : undefined;
+		if (page && !pageTitle) {
+			throw new Error(`GlossaryList: no title mapped for governing page "${page}"`);
+		}
+		return { ...entry, slug: slugify(entry.term), page, pageTitle };
+	});
+---
+
+<dl class="glossary-list not-content">
+	{
+		entries.map(({ term, tip, slug, page, pageTitle }) => (
+			<div class="entry" id={slug}>
+				<dt>{term}</dt>
+				<dd>
+					<p>{tip}</p>
+					{page && (
+						<a class="governed" href={page}>
+							Governed by: {pageTitle} →
+						</a>
+					)}
+				</dd>
+			</div>
+		))
+	}
+</dl>
+
+<style>
+	.glossary-list {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		margin: 1.75rem 0 2.5rem;
+	}
+
+	.entry {
+		background: var(--panel);
+		border-radius: 10px;
+		padding: 1.1rem 1.3rem 1rem;
+		/* Room above an anchor target so the sticky header never hides the term. */
+		scroll-margin-top: 5rem;
+	}
+
+	/* Anchor landings get the tooltip's teal, so the eye finds the term. */
+	.entry:target {
+		background: var(--teal-tint);
+	}
+
+	dt {
+		font-family: var(--font-sans);
+		font-weight: 600;
+		font-size: 0.98rem;
+		color: var(--teal-dark);
+		margin: 0 0 0.35rem;
+	}
+
+	dd {
+		margin: 0;
+	}
+
+	dd p {
+		margin: 0;
+		font-size: 0.94rem;
+		line-height: 1.6;
+	}
+
+	.governed {
+		display: inline-block;
+		margin-top: 0.5rem;
+		font-family: var(--font-sans);
+		font-size: 0.82rem;
+		color: var(--teal-dark);
+		text-decoration: none;
+	}
+
+	.governed:hover {
+		text-decoration: underline;
+	}
+</style>

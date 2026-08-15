@@ -72,6 +72,9 @@ Layouts: light and airy, minimal borders, generous whitespace, sentence/title ca
 
 - `data/glossary.json` drives a `<G term="...">` inline component: dotted teal underline,
   tooltip on hover (desktop) / tap (mobile), optional link to the term's page.
+- Every term's `link` lands on its anchor on the Glossary page (`/glossary/#<kebab-term>`,
+  rendered by `GlossaryList.astro` from the same JSON); the term's `page` field records the
+  governing page, shown as "Governed by →" on the Glossary entry.
 - A remark plugin auto-wraps the FIRST occurrence of each glossary term per page.
   Manual `<G>` always wins. Auto-wrap never fires:
   - inside headings, quotes, or code;

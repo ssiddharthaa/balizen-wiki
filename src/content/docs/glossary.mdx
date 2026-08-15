@@ -1,0 +1,20 @@
+---
+title: Glossary
+section: Reference
+source: data/glossary.json (mirrors vt-guide-v4 Correct Terms Glossary + core brand terms)
+status: approved
+updated: 2026-08-15
+note: Rendered live from the same data that drives the inline tooltips — this page and the tooltips cannot drift apart. When the Correct Terms Glossary changes in Notion, data/glossary.json is updated to match.
+---
+
+import GlossaryList from '../../components/GlossaryList.astro';
+
+Every Balizen term in one place. These are the same definitions that appear as
+dotted-teal tooltips across the wiki — hovering a term anywhere brings you its
+definition, and following the tooltip's link lands here. Each entry points
+onward to the page where its rule is set.
+
+For the full do/don't tables behind the language rules, see the
+[Correct Terms Glossary](/correct-terms-glossary/).
+
+<GlossaryList />
