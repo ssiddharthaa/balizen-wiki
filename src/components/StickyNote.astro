@@ -17,13 +17,20 @@ interface Props {
 }
 
 const { title, tone = 'panel' } = Astro.props;
+
+// Some notes on the whiteboard are a single statement with nothing under it.
+const hasBody = Astro.slots.has('default');
 ---
 
-<div class:list={['sticky', `tone-${tone}`]}>
+<div class:list={['sticky', `tone-${tone}`, { 'is-titleOnly': !hasBody }]}>
 	<p class="sticky-title">{title}</p>
-	<div class="sticky-body">
-		<slot />
-	</div>
+	{
+		hasBody && (
+			<div class="sticky-body">
+				<slot />
+			</div>
+		)
+	}
 </div>
 
 <style>
@@ -38,6 +45,11 @@ const { title, tone = 'panel' } = Astro.props;
 	}
 	.tone-tint {
 		background: var(--teal-tint);
+	}
+
+	.is-titleOnly .sticky-title {
+		margin-bottom: 0;
+		font-weight: 500;
 	}
 
 	.sticky-title {

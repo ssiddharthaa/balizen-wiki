@@ -12,14 +12,19 @@
 interface Props {
 	/** Callout text, verbatim from the whiteboard. */
 	label: string;
-	/** Single hero image rather than a multi-image row. */
-	single?: boolean;
+	/**
+	 * row    — several portrait shots side by side (the closeups)
+	 * single — one image, held to a comfortable reading width
+	 * stack  — one image per line at full width (wide Instagram rows)
+	 * pair   — two per line (reference grids, kept compact)
+	 */
+	layout?: 'row' | 'single' | 'stack' | 'pair';
 }
 
-const { label, single = false } = Astro.props;
+const { label, layout = 'row' } = Astro.props;
 ---
 
-<figure class:list={['photo-set', { 'is-single': single }]}>
+<figure class:list={['photo-set', `is-${layout}`]}>
 	<div class="frames">
 		<slot />
 	</div>
@@ -41,6 +46,16 @@ const { label, single = false } = Astro.props;
 	/* A single hero photo shouldn't stretch the full content width. */
 	.is-single .frames {
 		grid-template-columns: minmax(0, 22rem);
+	}
+
+	/* Wide Instagram rows read as rows only at full width. */
+	.is-stack .frames {
+		grid-template-columns: minmax(0, 1fr);
+		gap: 1rem;
+	}
+
+	.is-pair .frames {
+		grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
 	}
 
 	.frames :global(img) {
