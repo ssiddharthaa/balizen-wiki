@@ -1,0 +1,50 @@
+---
+/**
+ * The hover link beside every heading (Sid, 16 Aug 2026).
+ *
+ * Two changes to Starlight's default:
+ *
+ * 1. The glyph becomes Phosphor's `copy`, because that is what the click now
+ *    does — it copies a link to that section (see the anchor script in
+ *    Head.astro). The chain-link glyph implied navigation to a place you are
+ *    already at.
+ * 2. It shrinks and moves away from the title. Starlight sizes the icon off the
+ *    `.sl-heading-wrapper`, whose font-size is Starlight's own `--sl-text-h2`
+ *    (~35px) — but custom.css sets our headings smaller than that (~24px), so
+ *    the default 0.8275em rendered the icon *larger than the heading text* and
+ *    tight against it.
+ *
+ * Both sizes go through Starlight's own custom properties, so the end-of-line
+ * padding, the negative margin that stops the icon wrapping alone, and the
+ * vertical centring all stay consistent — see style/anchor-links.css.
+ *
+ * The artwork is masked over Starlight's own <svg> box, which already carries
+ * their width/vertical-align/transform, so only the glyph is replaced.
+ */
+import copySvg from '../assets/icons/phosphor/copy.svg?raw';
+
+const uri = `data:image/svg+xml,${encodeURIComponent(copySvg.trim())}`;
+
+const css = [
+	`.sl-markdown-content .sl-heading-wrapper{`,
+	// ~17px against a 24px heading, matching the sidebar icons.
+	`--sl-anchor-icon-size:0.5em;`,
+	`--sl-anchor-icon-gap:0.45em;}`,
+
+	// Replace the glyph: hide Starlight's paths, paint ours into the same box.
+	`.sl-markdown-content .sl-anchor-icon > svg > *{display:none;}`,
+	`.sl-markdown-content .sl-anchor-icon > svg{`,
+	`height:var(--sl-anchor-icon-size);`,
+	`background-color:currentColor;`,
+	`-webkit-mask:url("${uri}") center/contain no-repeat;`,
+	`mask:url("${uri}") center/contain no-repeat;}`,
+
+	// Quieter than the heading it belongs to, and only fully present on hover.
+	`.sl-markdown-content .sl-anchor-link{color:var(--teal);opacity:0;}`,
+	`.sl-markdown-content .sl-heading-wrapper:hover .sl-anchor-link,`,
+	`.sl-markdown-content .sl-anchor-link:focus-visible{opacity:.7;}`,
+	`.sl-markdown-content .sl-anchor-link:hover{opacity:1;}`,
+].join('');
+---
+
+<style set:html={css}></style>

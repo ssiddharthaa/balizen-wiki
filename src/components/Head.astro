@@ -7,6 +7,7 @@
  */
 import Default from '@astrojs/starlight/components/Head.astro';
 import SidebarIcons from './SidebarIcons.astro';
+import AnchorLinkIcon from './AnchorLinkIcon.astro';
 import tokens from '../../data/tokens.json';
 
 const cssVars = [
@@ -46,6 +47,8 @@ const cssVars = [
 <style set:html={`:root{${cssVars}}`}></style>
 
 <SidebarIcons />
+
+<AnchorLinkIcon />
 
 {/*
 	Glossary tooltips: tap-to-toggle on touch (CSS handles hover/focus on desktop),
