@@ -1,0 +1,49 @@
+---
+title: Photography for Website
+section: Design Guides
+source: whiteboard transcription (Aug 2026); example photographs supplied by Sid (Aug 2026)
+status: approved
+updated: 2026-08-16
+note: Covers file specs only. A theme guide (the look and feel per season) is still to be written.
+---
+
+import { Image } from 'astro:assets';
+import PhotoSet from '../../components/PhotoSet.astro';
+
+import aspectSquareClothing from '../../assets/website-photos/aspect-ratio-1.webp';
+import aspectPortraitClothing from '../../assets/website-photos/aspect-ratio-2.webp';
+import aspectSquareHomewares from '../../assets/website-photos/aspect-ratio-3.webp';
+
+These are the file specs for product shots on the [Website](/website-guide/). For the look and feel — light, fresh, natural elegance — see [Social Media: Formats](/social-media-formats/).
+
+## Product Photography — minimums per product
+- 1 picture in setting (closeup & bigger setting)
+- 1 on white background
+- Should have 1 video also
+
+## File Attributes & Treatment
+- Product photos have been getting larger
+- Aspect ratio: square for product · rectangular portrait for clothing
+- Color correction, clean up background
+- Save as TIF with no reduced size or compression (master)
+- Naming convention — product code
+- Save as PNG for website: 1200×1200 for product · 1200×1800 for clothing
+
+## Aspect ratios
+
+<PhotoSet layout="pair" label="Square, 1200×1200 — clothing on a plain ground, and a homewares piece in setting">
+	<Image src={aspectSquareClothing} alt="Square product shot: model in a crocheted capelet over a pink and coral floral dress, on a plain pale ground." />
+	<Image src={aspectSquareHomewares} alt="Square homewares shot in setting: a navy leaf-print table runner over gingham on a pale table, with white roses in a glass jar and green apples on a wooden tray." />
+</PhotoSet>
+
+<PhotoSet layout="single" label="Rectangular portrait — clothing, shown full length">
+	<Image src={aspectPortraitClothing} alt="Portrait clothing shot: model turning to camera in a floor-length pink and coral floral dress with a crocheted capelet, on a plain pale ground." />
+</PhotoSet>
+
+:::note
+The portrait example above is 1200×1500 (4:5), while the spec on this page calls
+for 1200×1800 (2:3). Worth settling which is the standard before the next shoot.
+:::
+
+## Clothing shot list
+front · back · side · details · video

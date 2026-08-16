@@ -487,6 +487,32 @@ body {
 	color: var(--grey);
 }
 
+/* ---------- Asides (:::note etc.) on the brand palette ----------
+   Starlight ships notes in blue and tips in purple, which read as someone
+   else's UI inside a teal, panel-based page. Both hooks are custom properties,
+   so the aside keeps its own layout and only the colours change. */
+.sl-markdown-content .starlight-aside {
+	background-color: var(--panel);
+	border-radius: 0 8px 8px 0;
+}
+.sl-markdown-content .starlight-aside--note {
+	--sl-color-asides-text-accent: var(--teal-dark);
+	--sl-color-asides-border: var(--teal);
+	background-color: var(--teal-tint);
+}
+.sl-markdown-content .starlight-aside--tip {
+	--sl-color-asides-text-accent: var(--teal-dark);
+	--sl-color-asides-border: var(--hugger);
+}
+.sl-markdown-content .starlight-aside--caution {
+	--sl-color-asides-text-accent: #8a5a2b;
+	--sl-color-asides-border: var(--glow);
+}
+.sl-markdown-content .starlight-aside--danger {
+	--sl-color-asides-text-accent: #8a3a2b;
+	--sl-color-asides-border: var(--spice);
+}
+
 /* Heading-anchor "Link copied" toast (script in Head.astro). */
 .anchor-toast {
 	position: fixed;

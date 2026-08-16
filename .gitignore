@@ -25,3 +25,9 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+# Full-resolution photo masters. The site uses the optimised derivatives in
+# src/assets/store-photos/ and src/assets/website-photos/ (328MB -> 8MB); the
+# originals stay on disk for re-exporting but are too heavy to carry in git.
+src/assets/store photos/
+src/assets/website photos/

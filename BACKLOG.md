@@ -49,18 +49,20 @@ of it becomes a page — they're raw notes, not checked copy.
 
 ## Photography we need
 
-Andrea asked for photographs in three places (Aug 2026). None can be filled from
-what's in `src/assets` today.
+Andrea asked for photographs in three places (Aug 2026). Two are now filled —
+Store Design and Photography for Website, from Sid's supplied sets (16 Aug 2026).
 
 | Page | What's needed | Notes |
 |---|---|---|
-| Product Design Guide | "A few photos" for the design section | Andrea: *"not sure which photos"* — needs her to choose the subjects |
-| Store Design Guide | Photo examples of store design | No store photography exists in the repo at all |
-| Photography for Website | One clothing example, one homewares example | Best supplied as actual website product shots — 1200×1800 clothing, 1200×1200 homewares — so they double as spec-compliant examples of the standard the page sets |
+| Product Design Guide | "A few photos" for the design section | Andrea: *"not sure which photos"* — still needs her to choose the subjects. The section to illustrate is **Thoughtful design**: harmonious colors, pockets the right size and in the right place, handles that fit the hand, production techniques suited to the item |
 
 The social-media reference shots we hold are deliberately *not* used for the
 Photography page: they're campaign imagery, and showing them as product-photography
 examples would misrepresent the white-background standard that page defines.
+
+**Open from the supplied set:** the portrait clothing example is 1200×1500 (4:5)
+but the Photography page's spec says 1200×1800 (2:3). Flagged in a note on the
+page — settle which is the standard before the next shoot.
 
 ---
 
