@@ -3,10 +3,13 @@
  * Phosphor icons in the sidebar (Sid, 16 Aug 2026) — sidebar only; page content
  * carries no icons.
  *
- * Rendered as CSS mask layers rather than inline <svg>, which is what lets the
- * icon take `currentColor`: it is painted with background-color, so it inherits
- * the exact color of the label beside it — ink normally, teal-dark and bold on
- * the active page — with no second colour to keep in sync.
+ * Rendered as CSS mask layers rather than inline <svg>, so the artwork is
+ * painted with background-color and the colour is ours to set.
+ *
+ * They are painted to match the section titles above them (Sid, 16 Aug 2026):
+ * the same --grey at the same 0.55 opacity as `.group-label > span`. That keeps
+ * them a quiet wayfinding mark rather than a second bold element competing with
+ * the link text. Keep these two in sync with the group-label rule in custom.css.
  *
  * The rules are generated from the vendored artwork in assets/icons/phosphor,
  * so a missing file is a build error rather than a silently absent icon. Only
@@ -72,7 +75,8 @@ const css = [
 	`.sidebar-content a{display:flex;align-items:center;gap:${GAP};}`,
 	`.sidebar-content a:is(${scope})::before{` +
 		`content:'';flex:none;width:${SIZE};height:${SIZE};` +
-		`background-color:currentColor;` +
+		// Matches `.group-label > span` — same token, same opacity.
+		`background-color:var(--grey);opacity:.55;` +
 		`-webkit-mask:center/contain no-repeat;mask:center/contain no-repeat;}`,
 	// Keep the group labels' existing 17px hang relative to the link text by
 	// indenting them the width of the icon column.
