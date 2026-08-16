@@ -1,0 +1,89 @@
+---
+/**
+ * Phosphor icons in the sidebar (Sid, 16 Aug 2026) — sidebar only; page content
+ * carries no icons.
+ *
+ * Rendered as CSS mask layers rather than inline <svg>, which is what lets the
+ * icon take `currentColor`: it is painted with background-color, so it inherits
+ * the exact color of the label beside it — ink normally, teal-dark and bold on
+ * the active page — with no second colour to keep in sync.
+ *
+ * The rules are generated from the vendored artwork in assets/icons/phosphor,
+ * so a missing file is a build error rather than a silently absent icon. Only
+ * mapped links get the ::before, so an unmapped page renders no empty box.
+ *
+ * Icons are inlined as data URIs: ~14KB of artwork that compresses well, in
+ * exchange for no extra requests and no flash of icon-less nav on first paint.
+ */
+const raw = import.meta.glob<string>('../assets/icons/phosphor/*.svg', {
+	eager: true,
+	query: '?raw',
+	import: 'default',
+});
+
+/** Sidebar href → Phosphor icon. Keep in sync with the sidebar in astro.config.mjs. */
+const ICONS: Record<string, string> = {
+	'/': 'house-line',
+	'/the-balizen-brand/': 'sparkle',
+	'/brand-story/': 'book-open',
+	'/brand-experience/': 'hand-heart',
+	'/who-we-speak-to/': 'users-three',
+	'/voice-and-tone/': 'chat-circle-text',
+	'/correct-terms-glossary/': 'seal-check',
+	'/identity-system/': 'stack',
+	'/logo/': 'shapes',
+	'/color/': 'palette',
+	'/typography/': 'text-aa',
+	'/symbols/': 'flower-lotus',
+	'/product-design-guide/': 't-shirt',
+	'/store-design-guide/': 'storefront',
+	'/website-guide/': 'browser',
+	'/photography-guide/': 'camera',
+	'/email-communication-guide/': 'envelope-simple',
+	'/social-media/': 'share-network',
+	'/social-media-formats/': 'image',
+	'/social-media-grid/': 'grid-nine',
+	'/social-media-storytelling/': 'book-open-text',
+	'/hashtag-glossary/': 'hash',
+	'/glossary/': 'book-bookmark',
+};
+
+const SIZE = '1.05rem';
+const GAP = '0.6rem';
+
+const dataUri = (name: string) => {
+	const svg = raw[`../assets/icons/phosphor/${name}.svg`];
+	if (!svg) {
+		throw new Error(
+			`SidebarIcons: "${name}.svg" not found in src/assets/icons/phosphor. ` +
+				`Vendor it from @phosphor-icons/core (regular weight) first.`
+		);
+	}
+	return `data:image/svg+xml,${encodeURIComponent(svg.trim())}`;
+};
+
+const hrefs = Object.keys(ICONS);
+// Only mapped links get an icon box, so an unmapped page shows nothing at all
+// rather than a filled square where the mask would have been.
+const scope = hrefs.map((h) => `[href="${h}"]`).join(',');
+
+const css = [
+	`.sidebar-content a{display:flex;align-items:center;gap:${GAP};}`,
+	`.sidebar-content a:is(${scope})::before{` +
+		`content:'';flex:none;width:${SIZE};height:${SIZE};` +
+		`background-color:currentColor;` +
+		`-webkit-mask:center/contain no-repeat;mask:center/contain no-repeat;}`,
+	// Keep the group labels' existing 17px hang relative to the link text by
+	// indenting them the width of the icon column.
+	`.sidebar-content .group-label{padding-inline-start:calc(${SIZE} + ${GAP});}`,
+	...hrefs.map((href) => {
+		const uri = dataUri(ICONS[href]!);
+		return (
+			`.sidebar-content a[href="${href}"]::before{` +
+			`-webkit-mask-image:url("${uri}");mask-image:url("${uri}");}`
+		);
+	}),
+].join('');
+---
+
+<style set:html={css}></style>
