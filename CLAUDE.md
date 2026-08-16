@@ -55,6 +55,11 @@ Layouts: light and airy, minimal borders, generous whitespace, sentence/title ca
    - "Reclaimed wood" not "recycled wood" · "Vetiver root" not straw/grass ·
      "Capiz shell" not mother of pearl · "Crochet" vs "knit" — never interchangeable.
    - "Our workshop" — never "factory" or "facility".
+   - **"Color story"** — a season's coordinated set of colors, and the container that
+     sections a store and the website. Never "color palette" or "color group" for a
+     season (Andrea, Aug 2026). "Colorway" stays available for one variant of one
+     design; the fixed eight brand colors on the Color page are still the palette.
+     A fuller treatment of colour terminology is logged in `BACKLOG.md`.
    - **Kawok is the cutter** (oversees cutting, not sewing). Never "sewer".
      Individual cutter names only if confirmed with Andrea.
 5. **Banned words in customer-facing copy** (V&T V4 "Words We Avoid"):
@@ -107,6 +112,10 @@ Layouts: light and airy, minimal borders, generous whitespace, sentence/title ca
 - Do not add analytics, trackers, or third-party scripts without being asked.
 
 ## Pending decisions (do not resolve unilaterally)
+
+> Missing content, assets we're waiting on, and pages agreed for later live in
+> `BACKLOG.md`. This section is the shorter list of things that must not be
+> decided without Andrea or Sid.
 
 - "Balizen — by Zen Zen Garden Home" lockup: seen in Brand Palette whiteboard draft;
   NOT yet in the approved style guide. Ask before adding to the Identity page.

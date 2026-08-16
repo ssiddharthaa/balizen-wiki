@@ -209,7 +209,7 @@ The full audience definition lives on the [Who We Speak To](/who-we-speak-to/) p
 
 | Audience | Who | Lens emphasis | Where we reach them |
 |---|---|---|---|
-| 👱‍♀️ Primary — The Conscious Home-Maker | Women 30–55, home-and-family oriented. Many first meet Balizen as travelers. | Values first, Tourist Journey second | Bali stores, website, email, magazine features, tourism events |
+| 👱‍♀️ Primary — The Conscious Home Decorator | Women 30–70, mid-to-high income. Many first meet Balizen as travelers. | Values first, Tourist Journey second | Bali stores, website, email, magazine features, tourism events |
 | 📱 Secondary — The Conscious Next Generation | 25–35, Instagram-native, capsule-wardrobe minded. They buy fewer, better things — and share what they love. | Education and Values, told visually | Social media, short-form video, creator collaborations |
 | 🏨 Future — The Trade & The Taste-Makers | Interior designers, stylists, boutique hotels, conscious retailers. One relationship, many homes. | Values as differentiator, Education as sales story | Wholesale catalog, trade fairs, tourism conferences, direct outreach |
 

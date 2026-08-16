@@ -16,9 +16,9 @@ Every Balizen customer, in some measure, sees us through these lenses. Dial each
 - **🏝️ The Tourist Journey** — From holiday to home. Tourism and hosting are at the heart of Balizen: the go-to for Bali-made eco souvenirs — a feel-good, well-designed, truly made-in-Bali, Bali-owned brand, regularly invited to gift at Indonesia's tourism conferences. Wherever a customer discovers us, they're taking a piece of Bali home — and can return to us long after the trip ends.
 - **🍎 Education** — The craft, the culture, the technique, the maker. Curiosity is welcome here. Every touchpoint is a chance to teach the story behind the object.
 
-## 👱‍♀️ Primary Audience — The Conscious Home-Maker
+## 👱‍♀️ Primary Audience — The Conscious Home Decorator
 
-Women 30–55, mid-to-high income, home-and-family oriented. They shop homewares, gifts, and slow fashion with intention. Concentrated in Australia, Europe, Singapore, and the US. They value quality, natural elegance, and knowing who made what they own. Many first meet Balizen as travelers — the trusted stop for authentic, Bali-made souvenirs and gifts worth carrying home.
+Women 30–70, mid-to-high income. They shop homewares, gifts, and slow fashion with intention. Concentrated in Australia, Europe, Singapore, and the US. They value quality, natural elegance, and knowing who made what they own. Many first meet Balizen as travelers — the trusted stop for authentic, Bali-made souvenirs and gifts worth carrying home.
 
 - **Lens emphasis:** Values first, Tourist journey second.
 - **Where we reach them:** Bali [stores](/store-design-guide/), [website](/website-guide/), [email](/email-communication-guide/), magazine features, tourism events.

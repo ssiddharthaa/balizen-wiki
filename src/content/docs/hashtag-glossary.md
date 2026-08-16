@@ -2,8 +2,8 @@
 title: Hashtag Glossary & Guidance
 section: Social Media
 source: vt-guide-v4
-status: draft-unapproved
-updated: 2026-08-15
+status: approved
+updated: 2026-08-16
 note: Approved V&T V4 content, internal/hire-facing in tone.
 ---
 
@@ -14,13 +14,16 @@ Hashtags are a discovery tool, not decoration. Use them intentionally, keep them
 **Total target:** 18–22 hashtags per post, mixing categories below.
 
 ## Core Brand Tags (use on every post — always include 2–3)
-#balizen · #fromsmiletosmile · #madeinbali · #handmadeinbali · #fairtradebali
+#balizen · #fromsmiletosmile · #madeinbali · #handmadeinbali · #fairtradebali · #treehugger
 
 ## Fair Trade & Ethical Positioning
 #fairtrade · #fairtradefederation · #fairtradefashion · #ethicalfashion · #consciousfashion · #sustainablestyle · #slowfashion · #sustainablefashion · #ethicallymade
 
 ## Craft & Making
 #artisanmade · #handmadeclothing · #handmadewithlove · #handwovenwithlove · #traditionalcraft · #textileart · #handsilkscreened
+
+## Nature & Design
+#inspiredbynature · #flowerpower
 
 ## Product-Specific (rotate by post)
 - Fashion & resort wear: #resortwear · #resortfashion · #slowfashionmovement · #consciouswardrobe · #islandstyle
@@ -30,7 +33,7 @@ Hashtags are a discovery tool, not decoration. Use them intentionally, keep them
 - Gifts: #fairtradegifts · #sustainablegifts · #ethicalgifts · #handmadegifts · #giftguide
 
 ## Location & Discovery (use 2–3)
-#balishopping · #ubudshopping · #seminyakshopping · #shopbali · #balilife · #balibrand · #jakartashopping · #discoverbali
+#balishopping · #ubudshopping · #seminyakshopping · #shopbali · #balilife · #balibrand · #jakartashopping · #discoverbali · #umkm
 
 ## Seasonal / Campaign Tags (campaign moments only)
 #ramadan · #ramadangifts · #holidaygifts · #valentinesday · #mothersday · #christmasgifts

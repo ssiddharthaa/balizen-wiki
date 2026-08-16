@@ -90,6 +90,7 @@ export default defineConfig({
 						{ label: 'Store Design Guide', slug: 'store-design-guide' },
 						{ label: 'Website Guide', slug: 'website-guide' },
 						{ label: 'Photography for Website', slug: 'photography-guide' },
+						{ label: 'Video', slug: 'video' },
 						{ label: 'Email Communication Guide', slug: 'email-communication-guide' },
 					],
 				},

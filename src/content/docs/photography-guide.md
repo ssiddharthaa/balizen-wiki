@@ -2,8 +2,8 @@
 title: Photography for Website
 section: Design Guides
 source: whiteboard transcription (Aug 2026)
-status: draft-unapproved
-updated: 2026-08-15
+status: approved
+updated: 2026-08-16
 note: Covers file specs only. A theme guide (the look and feel per season) is still to be written.
 ---
 

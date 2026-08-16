@@ -50,6 +50,16 @@ This page sets the phrasing rules. For what each term means, see the [Glossary](
 
 **Why this matters:** Every entry here names a real, specific material — and several of the wrong words describe genuinely different things. Reclaimed and recycled wood are different processes; capiz shell and mother of pearl are different materials; crochet and knit are different crafts. "Remnant fabric" tells the truth about the patchwork and zero-waste lines without making the material sound like waste. Naming materials exactly is part of owning what's real.
 
+## Color
+
+| Use ✅ | Don't Use ❌ |
+|---|---|
+| "Color story" | "Color palette" (for a season's colors) |
+| "Color story" | "Color group" |
+| "Colorway" (one variant of a design) | "Color story" (when you mean a single variant) |
+
+**Why this matters:** A season's colors are a *story* — a set that holds together and sections a store and the website, not a swatch list. Andrea's word is "color story", and "palette" and "group" both flatten it. Keep three things distinct: the brand's core colors (the fixed eight on the [Color](/color/) page), a **color story** (a season's coordinated set), and a **colorway** (one variant of one design).
+
 ## Processes and roles
 
 | Use ✅ | Don't Use ❌ |
