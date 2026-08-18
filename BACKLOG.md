@@ -32,6 +32,15 @@ Decided for now: the Identity System page keeps saying **Colour**; "colour story
 carries the seasonal/sectioning meaning. Revisit as one piece rather than
 term-by-term.
 
+### Store posters — a more refined generation
+
+**Raised by Sid, 18 Aug 2026.** The clothing posters in store follow a
+semi-established format, updated each season, and that's fine for now — but the
+aspiration is better posters with more about the process, the artisans and the
+product: more refined, museum-y, exhibition grade. Worth noting for the redo:
+the current poster set's labels include "Artisanal", which Words We Avoid bans
+in customer-facing copy.
+
 ### Advertising
 
 The one unstruck item on the Notion section checklist (magazine, billboard, social
