@@ -25,7 +25,10 @@ const { label, layout = 'row' } = Astro.props;
 ---
 
 <figure class:list={['photo-set', `is-${layout}`]}>
-	<div class="frames">
+	{/* `not-content` opts out of Starlight's markdown sibling spacing, which would
+	    otherwise give every image after the first a margin-top and leave the row
+	    stepped instead of top-aligned. */}
+	<div class="frames not-content">
 		<slot />
 	</div>
 	<figcaption class="callout">{label}</figcaption>
