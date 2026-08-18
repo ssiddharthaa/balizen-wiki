@@ -10,8 +10,6 @@ note: Covers file specs only. A theme guide (the look and feel per season) is st
 import { Image } from 'astro:assets';
 import PhotoSet from '../../components/PhotoSet.astro';
 
-import hoodieTop from '../../assets/website-photos/clothing-45-hoodie-top.webp';
-import hoodieFull from '../../assets/website-photos/clothing-45-hoodie-full.webp';
 import listingPoses from '../../assets/website-photos/clothing-45-listing-poses.webp';
 import clothingGrid from '../../assets/website-photos/clothing-45-collection-grid.webp';
 import squareNecklaces from '../../assets/website-photos/collection-square-necklaces.webp';
@@ -25,6 +23,11 @@ These are the file specs for product shots on the [Website](/website-guide/). Fo
 - 1 on white background
 - Should have 1 video also
 
+:::note
+On the website each product should have a short video clip. Not all products
+have one yet — moving forward this should be added to all products.
+:::
+
 ## File Attributes & Treatment
 - Product photos have been getting larger
 - Aspect ratio: 4:5 (the Instagram aspect ratio) for all clothing · square for everything else
@@ -33,16 +36,13 @@ These are the file specs for product shots on the [Website](/website-guide/). Fo
 - Naming convention — product code
 - Save as PNG for website: 1200×1200 for product · 1200×1500 (4:5) for clothing
 
-## Aspect ratios
+## Clothing
+
+Shot list: front · back · side · details · video
 
 All clothing is always 4:5 — the Instagram aspect ratio, so the same photos
-serve the website and social. Everything else is always square. Older clothing
-photos may still appear in other aspect ratios; those are being phased out.
-
-<PhotoSet layout="pair" label="Clothing — always 4:5. Water Claret organic cotton organza hoodie: image 1 cropped to show the top, image 3 the full body shot">
-	<Image src={hoodieTop} alt="4:5 clothing shot cropped to the top: model in a pink and claret patterned organza hoodie over a chartreuse skirt, on a plain pale ground." />
-	<Image src={hoodieFull} alt="4:5 full body shot of the same outfit: the hoodie and chartreuse skirt with red heels and a fuzzy claret bag." />
-</PhotoSet>
+serve the website and social. Older clothing photos may still appear in other
+aspect ratios; those are being phased out.
 
 <PhotoSet layout="single" label="A top's listing across poses — the first photo is cropped to just the top; later photos show the whole body">
 	<Image src={listingPoses} alt="A clothing listing: the main 4:5 photo cropped to the hoodie, with a thumbnail strip beneath running from the cropped first photo to full-body poses." />
@@ -52,7 +52,11 @@ photos may still appear in other aspect ratios; those are being phased out.
 	<Image src={clothingGrid} alt="A clothing collection grid where every tile is 4:5: the Water Claret hoodie, printed coats, crocheted pieces and a capelet, each with name and price." />
 </PhotoSet>
 
-<PhotoSet layout="pair" label="Everything else — always square. Necklaces grouped in an aesthetically pleasing way; table linens in a colour progression, same as the store — rainbow">
+## All other products
+
+Everything else is always square.
+
+<PhotoSet layout="pair" label="Necklaces grouped in an aesthetically pleasing way; table linens in a colour progression, same as the store — rainbow">
 	<Image src={squareNecklaces} alt="A jewelry collection page of square tiles: models wearing beaded and crocheted necklaces from the Claret, Indigo, Teal, Avocado and Ginkgo Siren collections, with names and prices." />
 	<Image src={squareTableLinens} alt="A table linens collection page of square tiles — runners, placemats and napkins — sequenced through avocado greens into teal and blue, the rainbow progression the store shelves use." />
 </PhotoSet>
@@ -60,6 +64,3 @@ photos may still appear in other aspect ratios; those are being phased out.
 <PhotoSet layout="single" label="A listing's first photo and its other photos — table linens">
 	<Image src={listingTableLinens} alt="A table runner listing: the square first photo of a teal floral runner set with a salad bowl on a grey table, above thumbnails of the in-setting shot, the flat product and a styled variant." />
 </PhotoSet>
-
-## Clothing shot list
-front · back · side · details · video
