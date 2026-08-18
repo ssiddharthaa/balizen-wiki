@@ -31,3 +31,4 @@ pnpm-debug.log*
 # originals stay on disk for re-exporting but are too heavy to carry in git.
 src/assets/store photos/
 src/assets/website photos/
+src/assets/social-media/update 18-aug/
