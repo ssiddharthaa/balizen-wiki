@@ -60,9 +60,9 @@ The social-media reference shots we hold are deliberately *not* used for the
 Photography page: they're campaign imagery, and showing them as product-photography
 examples would misrepresent the white-background standard that page defines.
 
-**Open from the supplied set:** the portrait clothing example is 1200×1500 (4:5)
-but the Photography page's spec says 1200×1800 (2:3). Flagged in a note on the
-page — settle which is the standard before the next shoot.
+~~Open: portrait clothing 4:5 vs the spec's 2:3~~ — **resolved 18 Aug 2026**:
+all clothing is always 4:5 (the Instagram ratio); older clothing photos in other
+ratios are being phased out. The Photography page now carries the rule.
 
 ---
 

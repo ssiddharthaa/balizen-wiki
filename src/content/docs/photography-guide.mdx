@@ -1,18 +1,22 @@
 ---
 title: Photography for Website
 section: Design Guides
-source: whiteboard transcription (Aug 2026); example photographs supplied by Sid (Aug 2026)
+source: whiteboard transcription (Aug 2026); aspect ratio rule + example photographs supplied by Sid (18 Aug 2026)
 status: approved
-updated: 2026-08-16
+updated: 2026-08-18
 note: Covers file specs only. A theme guide (the look and feel per season) is still to be written.
 ---
 
 import { Image } from 'astro:assets';
 import PhotoSet from '../../components/PhotoSet.astro';
 
-import aspectSquareClothing from '../../assets/website-photos/aspect-ratio-1.webp';
-import aspectPortraitClothing from '../../assets/website-photos/aspect-ratio-2.webp';
-import aspectSquareHomewares from '../../assets/website-photos/aspect-ratio-3.webp';
+import hoodieTop from '../../assets/website-photos/clothing-45-hoodie-top.webp';
+import hoodieFull from '../../assets/website-photos/clothing-45-hoodie-full.webp';
+import listingPoses from '../../assets/website-photos/clothing-45-listing-poses.webp';
+import clothingGrid from '../../assets/website-photos/clothing-45-collection-grid.webp';
+import squareNecklaces from '../../assets/website-photos/collection-square-necklaces.webp';
+import squareTableLinens from '../../assets/website-photos/collection-square-table-linens.webp';
+import listingTableLinens from '../../assets/website-photos/listing-first-photo-table-linens.webp';
 
 These are the file specs for product shots on the [Website](/website-guide/). For the look and feel — light, fresh, natural elegance — see [Social Media: Formats](/social-media-formats/).
 
@@ -23,27 +27,39 @@ These are the file specs for product shots on the [Website](/website-guide/). Fo
 
 ## File Attributes & Treatment
 - Product photos have been getting larger
-- Aspect ratio: square for product · rectangular portrait for clothing
+- Aspect ratio: 4:5 (the Instagram aspect ratio) for all clothing · square for everything else
 - Color correction, clean up background
 - Save as TIF with no reduced size or compression (master)
 - Naming convention — product code
-- Save as PNG for website: 1200×1200 for product · 1200×1800 for clothing
+- Save as PNG for website: 1200×1200 for product · 1200×1500 (4:5) for clothing
 
 ## Aspect ratios
 
-<PhotoSet layout="pair" label="Square, 1200×1200 — clothing on a plain ground, and a homewares piece in setting">
-	<Image src={aspectSquareClothing} alt="Square product shot: model in a crocheted capelet over a pink and coral floral dress, on a plain pale ground." />
-	<Image src={aspectSquareHomewares} alt="Square homewares shot in setting: a navy leaf-print table runner over gingham on a pale table, with white roses in a glass jar and green apples on a wooden tray." />
+All clothing is always 4:5 — the Instagram aspect ratio, so the same photos
+serve the website and social. Everything else is always square. Older clothing
+photos may still appear in other aspect ratios; those are being phased out.
+
+<PhotoSet layout="pair" label="Clothing — always 4:5. Water Claret organic cotton organza hoodie: image 1 cropped to show the top, image 3 the full body shot">
+	<Image src={hoodieTop} alt="4:5 clothing shot cropped to the top: model in a pink and claret patterned organza hoodie over a chartreuse skirt, on a plain pale ground." />
+	<Image src={hoodieFull} alt="4:5 full body shot of the same outfit: the hoodie and chartreuse skirt with red heels and a fuzzy claret bag." />
 </PhotoSet>
 
-<PhotoSet layout="single" label="Rectangular portrait — clothing, shown full length">
-	<Image src={aspectPortraitClothing} alt="Portrait clothing shot: model turning to camera in a floor-length pink and coral floral dress with a crocheted capelet, on a plain pale ground." />
+<PhotoSet layout="single" label="A top's listing across poses — the first photo is cropped to just the top; later photos show the whole body">
+	<Image src={listingPoses} alt="A clothing listing: the main 4:5 photo cropped to the hoodie, with a thumbnail strip beneath running from the cropped first photo to full-body poses." />
 </PhotoSet>
 
-:::note
-The portrait example above is 1200×1500 (4:5), while the spec on this page calls
-for 1200×1800 (2:3). Worth settling which is the standard before the next shoot.
-:::
+<PhotoSet layout="single" label="The new clothing aspect ratio in place — matches Instagram, so the same photos work across platforms; the latest, best version for consistency">
+	<Image src={clothingGrid} alt="A clothing collection grid where every tile is 4:5: the Water Claret hoodie, printed coats, crocheted pieces and a capelet, each with name and price." />
+</PhotoSet>
+
+<PhotoSet layout="pair" label="Everything else — always square. Necklaces grouped in an aesthetically pleasing way; table linens in a colour progression, same as the store — rainbow">
+	<Image src={squareNecklaces} alt="A jewelry collection page of square tiles: models wearing beaded and crocheted necklaces from the Claret, Indigo, Teal, Avocado and Ginkgo Siren collections, with names and prices." />
+	<Image src={squareTableLinens} alt="A table linens collection page of square tiles — runners, placemats and napkins — sequenced through avocado greens into teal and blue, the rainbow progression the store shelves use." />
+</PhotoSet>
+
+<PhotoSet layout="single" label="A listing's first photo and its other photos — table linens">
+	<Image src={listingTableLinens} alt="A table runner listing: the square first photo of a teal floral runner set with a salad bowl on a grey table, above thumbnails of the in-setting shot, the flat product and a styled variant." />
+</PhotoSet>
 
 ## Clothing shot list
 front · back · side · details · video
